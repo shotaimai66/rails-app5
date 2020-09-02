@@ -11,7 +11,6 @@ class LinebotController < ApplicationController
   end
 
   def callback
-    hensu = "変数"
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -51,7 +50,7 @@ class LinebotController < ApplicationController
               {
                 "type": "message",
                 # Botから送られてきたメッセージに表示される文字列です。
-                "label": "楽しい #{hensu}",
+                "label": "楽しい",
                 # ボタンを押した時にBotに送られる文字列です。
                 "text": "楽しい"
               },
