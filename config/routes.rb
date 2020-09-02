@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
   get '/signup', to: 'users#new'
-  
+
+  # LINE Messaging API機能
+  post '/callback' => 'linebot#callback'
+
   # ログイン機能
   get   '/login', to: 'sessions#new'
   post  '/login', to: 'sessions#create'
