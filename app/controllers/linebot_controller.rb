@@ -45,19 +45,19 @@ class LinebotController < ApplicationController
       "altText": "this is a confirm template",
       "template": {
           "type": "confirm",
-          "text": "今日のもくもく会は楽しいですか？",
+          "text": "今日の授業はわかりやすかったですか？",
           "actions": [
               {
                 "type": "message",
                 # Botから送られてきたメッセージに表示される文字列です。
-                "label": "楽しい",
+                "label": "わかりやすかった",
                 # ボタンを押した時にBotに送られる文字列です。
-                "text": "楽しい"
+                "text": "わかりやすかった"
               },
               {
                 "type": "message",
-                "label": "楽しくない",
-                "text": "楽しくない"
+                "label": "わかりにくかった",
+                "text": "わかりにくかった"
               }
           ]
       }
