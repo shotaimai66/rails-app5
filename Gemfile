@@ -17,6 +17,7 @@ gem 'jbuilder',     '~> 2.5'
 # 以下２つがLINE bot 機能実装の為、入れたgem
 gem 'line-bot-api'
 gem 'dotenv-rails'       #環境変数を管理するgem
+gem 'whenever', require: false  # gem 'whenever'を追加する。
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
