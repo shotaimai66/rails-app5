@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190912215939) do
+ActiveRecord::Schema.define(version: 20200906234819) do
 
   create_table "attendances", force: :cascade do |t|
     t.date "worked_on"
@@ -20,6 +20,30 @@ ActiveRecord::Schema.define(version: 20190912215939) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lesson_status_00", default: 0
+    t.integer "lesson_status_01", default: 0
+    t.integer "lesson_status_02", default: 0
+    t.integer "lesson_status_03", default: 0
+    t.integer "lesson_status_04", default: 0
+    t.integer "lesson_status_05", default: 0
+    t.integer "lesson_status_06", default: 0
+    t.integer "lesson_status_07", default: 0
+    t.integer "lesson_status_08", default: 0
+    t.integer "lesson_status_09", default: 0
+    t.integer "lesson_status_10", default: 0
+    t.integer "lesson_status_11", default: 0
+    t.integer "lesson_status_12", default: 0
+    t.integer "lesson_status_13", default: 0
+    t.integer "lesson_status_14", default: 0
+    t.integer "lesson_status_15", default: 0
+    t.integer "lesson_status_16", default: 0
+    t.integer "lesson_status_17", default: 0
+    t.integer "lesson_status_18", default: 0
+    t.integer "lesson_status_19", default: 0
+    t.integer "lesson_status_20", default: 0
+    t.integer "lesson_status_21", default: 0
+    t.integer "lesson_status_22", default: 0
+    t.integer "lesson_status_23", default: 0
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
@@ -34,6 +58,8 @@ ActiveRecord::Schema.define(version: 20190912215939) do
     t.string "department"
     t.datetime "basic_time", default: "2020-09-03 23:00:00"
     t.datetime "work_time", default: "2020-09-03 22:30:00"
+    t.boolean "tutor", default: false
+    t.boolean "parent", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
