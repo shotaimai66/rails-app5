@@ -25,10 +25,10 @@ class AttendancesController < ApplicationController
     end
     redirect_to @user
   end
-  
+
   def edit_one_month
   end
-  
+
   def update_one_month
     ActiveRecord::Base.transaction do #トランザクションを開始します。
       attendances_params.each do |id, item|
@@ -43,12 +43,21 @@ class AttendancesController < ApplicationController
      redirect_to attendances_edit_one_month_user_url(date:params[:date])
     
   end
-  
-  
+
+  # tutorがattendanceを一日単位でアップデートする為の編集画面
+  def edit_one_day
+  end
+
+  # tutorがattendanceを一日単位でアップデートする
+  def update_one_day
+  end
+
+
+
   private
   # 1ヶ月分の勤怠情報を扱います
   def attendances_params
-    params.require(:user).permit(attendances: [:started_at, :finished_at, :note])[:attendances]
+    params.require(:user).permit(attendances: [:started_at, :finished_at, :note, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
   end
   
   # beforeフィルター

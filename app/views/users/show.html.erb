@@ -41,22 +41,13 @@
     <tbody>
       <% @attendances.each do |day| %>
         <tr>
-          <td><%= l(day.worked_on, format: :short) %></td>
-          <td><%= $days_of_the_week[day.worked_on.wday] %></td>
-          <td>
-            <% if btn_text = attendance_state(day) %>
-              <%= link_to "#{btn_text}登録", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
-            <% end %>
-          </td>
-          <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
-          <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
-          <td>
-            <% if day.started_at.present? && day.finished_at.present? %>
-              <%= str_times = working_times(day.started_at, day.finished_at) %>
-              <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
-            <% end %>
-          </td>
-          <td><%= day.note %></td>
+          <td><%= day.day %></td>
+          <td>消去</td>
+          <td>出勤ボタン消去</td>
+          <td>消去</td>
+          <td>消去</td>
+          <td>消去</td>
+          <td>消去</td>
         </tr>
       <% end %> 
     </tbody>
@@ -69,9 +60,76 @@
       </tr>
       <tr>
         <td colspan="2"><%= @attendances.count %></td>
-        <td colspan="2"><%= format_basic_info(@user.work_time).to_f * @worked_sum %></td>
+        <td colspan="2">消去</td>
         <td colspan="2"><%= format("%.2f", @total_working_times.to_f) %></td>
       </tr>
     </tfoot>
   </table>
 </div>
+
+<!--ここから新記述-->
+<div>
+<h1><%= @user.name %>, <%= @user.email %></h1>
+  <%= link_to "←", user_path(date: @first_day.prev_month), class: "btn" %>
+  <%= link_to "→", user_path(date: @first_day.next_month), class: "btn" %>
+          
+  <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>日</th>
+        <th>月</th>
+        <th>火</th>
+        <th>水</th>
+        <th>木</th>
+        <th>金</th>
+        <th>土</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% month = [] %>
+      <% week1 = @attendances.slice(0..6) %>
+      <% week2 = @attendances.slice(7..13) %>
+      <% week3 = @attendances.slice(14..20) %>
+      <% week4 = @attendances.slice(21..27) %>
+      <% week5 = @attendances.slice(28..34) %>
+      <% week6 = @attendances.slice(35..45) %>
+      <% month = [week1, week2, week3, week4, week5, week6] %>
+      
+
+      <% month.each do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <td>
+
+
+              <%= day.day %><br>
+
+              <!--もし昨日以降の古い日付だったら(タイムゾーンつきで）xを表示  -->
+              <% if day.to_time.in_time_zone('Asia/Tokyo') < Date.current %>
+                <button class="btn btn-default" disabled>x</button>
+
+              <!--もしcurrent_userがTutorだったら-->
+              <% elsif current_user.tutor? %>
+                <%= link_to "授業を登録", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-primary" %>
+              <!--もしcurrent_userがParentだったら-->
+              <% elsif current_user.parent? %>
+                予約ボタン？
+              <% elsif current_user.admin? %>
+                機能しないボタンのみ？
+              <% end %>
+
+
+
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+  
+</div>
+
+<!--Tutorが一日の変更をするモーダルウインドウ表示-->
+<div id="edit_one_day" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
