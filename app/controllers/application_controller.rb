@@ -42,20 +42,22 @@ class ApplicationController < ActionController::Base
 
     one_month = [*@first_day..@last_day] # 対象の月の日数を代入します
 
-    # 何曜日？  sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5,sat: 6   2：火曜日
+    # 今月の１日は何曜日から始まる？  sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5,sat: 6   2：火曜日
     @day_of_the_week = @first_day.wday
+    # @first_dayの前月１ヶ月分の日数を取得
     prev_month = @first_day.prev_month.all_month
+    # @first_dayの翌月１ヶ月分の日数を取得
     next_month = @first_day.next_month.all_month
 
     # ユーザーに紐付く一ヶ月分のレコードを検索し取得します。
     # @attendances = @user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
     
-    # 月曜日始まりなので日曜日をたす
+    # @first_day.all_weekは月曜日始まりなので日曜日をたす
     # 前月の日を求める　月曜始まりを日曜始まりへ変更 そして１ヶ月たす
     # 月初が日曜日だったらone_monthに前月の日数を入れる
     @day_of_the_week > 1 ? one_month = ( (@first_day.all_week.to_a.unshift(@first_day.all_week.to_a.slice(0).prev_day)).to_a.slice(0..(@day_of_the_week-1)) + one_month ) : one_month
     # @one_monthに来月の日にちをたす
-    @attendances = one_month.to_a + next_month.to_a.slice(0..(42 - one_month.count - 1))
+    @one_month_calendar = one_month.to_a + next_month.to_a.slice(0..(42 - one_month.count - 1))
 
 
   #   unless one_month.count == @attendances.count # それぞれの件数（日数）が一致するか評価します。

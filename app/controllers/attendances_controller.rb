@@ -46,6 +46,8 @@ class AttendancesController < ApplicationController
 
   # tutorがattendanceを一日単位でアップデートする為の編集画面
   def edit_one_day
+    @day = Attendance.find_by(worked_on: params[:worked_on])
+    @user = User.find(params[:id])
   end
 
   # tutorがattendanceを一日単位でアップデートする
@@ -57,7 +59,7 @@ class AttendancesController < ApplicationController
   private
   # 1ヶ月分の勤怠情報を扱います
   def attendances_params
-    params.require(:user).permit(attendances: [:started_at, :finished_at, :note, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
+    params.require(:user).permit(attendances: [:started_at, :finished_at, :note, :worked_on, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
   end
   
   # beforeフィルター

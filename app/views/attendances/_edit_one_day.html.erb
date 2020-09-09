@@ -8,9 +8,49 @@
       </button>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <!--ここからコピぺの改造-->
-          <h2>モーダル</h2>
-         <!--ここまでコピペの改造-->
+          <!--ここからモーダルの中身-->
+          <%= form_with(model: @user, url: attendances_update_one_day_user_path(@user), local: true, method: :patch) do |f| %>
+            <h2>【モーダルでLesson可能時間を登録】</h2>
+              <table class="table table-bordered table-condensed table-hover" id="table-attendances">
+                <thead>
+                  <tr>
+                    <th>日付</th>
+                    <th>曜日</th>
+                    <th><span class="label label-danger">必須</span>　終了予定時間</th>
+                    <th>翌日</th>
+                    <th><span class="label label-danger">必須</span>　終業務処理内容</th>
+                    <th><span class="label label-danger">必須</span>　指示者確認㊞</th>
+                  </tr>
+                </thead>
+              <tbody>
+                <%
+                  css_class = 
+                  case $days_of_the_week[@day.worked_on.wday]
+                  when '土'
+                    'text-primary'
+                  when '日'
+                    'text-danger'
+                  end
+                %>
+                <%= f.fields_for "attendances[]", day do |af| %>
+                <tr>
+                  <td><%= l(day.worked_on, format: :short) %></td>
+                  <td class="<%= css_class %>"><%= $days_of_the_week[day.worked_on.wday] %></td>
+                  <td></td>
+                  <td><%= f.check_box :tomorrow %></td>
+                  <td><%= af.text_field :overtime_applying_note %></td>
+                  <td></td>
+  
+                      <%= af.hidden_field :user_id, :value => day.user_id %>
+                      <%= af.hidden_field :overtime_mark, :value => 1 %>
+                      </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <%= f.submit "変更を送信する", class: "btn btn-block btn-primary" %>
+          <% end %>
+
+         <!--ここまでモーダルの中身-->
         </div>
       </div>
     </div>

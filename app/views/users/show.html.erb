@@ -39,7 +39,7 @@
     </thead>
     
     <tbody>
-      <% @attendances.each do |day| %>
+      <% @one_month_calendar.each do |day| %>
         <tr>
           <td><%= day.day %></td>
           <td>消去</td>
@@ -59,7 +59,7 @@
       <td rowspan="2"></td>
       </tr>
       <tr>
-        <td colspan="2"><%= @attendances.count %></td>
+        <td colspan="2"><%= @one_month_calendar.count %></td>
         <td colspan="2">消去</td>
         <td colspan="2"><%= format("%.2f", @total_working_times.to_f) %></td>
       </tr>
@@ -89,12 +89,12 @@
 
     <tbody>
       <% month = [] %>
-      <% week1 = @attendances.slice(0..6) %>
-      <% week2 = @attendances.slice(7..13) %>
-      <% week3 = @attendances.slice(14..20) %>
-      <% week4 = @attendances.slice(21..27) %>
-      <% week5 = @attendances.slice(28..34) %>
-      <% week6 = @attendances.slice(35..45) %>
+      <% week1 = @one_month_calendar.slice(0..6) %>
+      <% week2 = @one_month_calendar.slice(7..13) %>
+      <% week3 = @one_month_calendar.slice(14..20) %>
+      <% week4 = @one_month_calendar.slice(21..27) %>
+      <% week5 = @one_month_calendar.slice(28..34) %>
+      <% week6 = @one_month_calendar.slice(35..45) %>
       <% month = [week1, week2, week3, week4, week5, week6] %>
       
 
@@ -106,8 +106,8 @@
 
               <%= day.day %><br>
 
-              <!--もし昨日以降の古い日付だったら(タイムゾーンつきで）xを表示  -->
-              <% if day.to_time.in_time_zone('Asia/Tokyo') < Date.current %>
+              <!--もし昨日以降の古い日付 もしくは今月の最終日よりも未来日だったら(タイムゾーンつきで）xを表示  -->
+              <% if (day.to_time.in_time_zone('Asia/Tokyo') < Date.current) || (day.to_time.in_time_zone('Asia/Tokyo') > @last_day) %>
                 <button class="btn btn-default" disabled>x</button>
 
               <!--もしcurrent_userがTutorだったら-->
