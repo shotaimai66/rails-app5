@@ -112,7 +112,7 @@
 
               <!--もしcurrent_userがTutorだったら-->
               <% elsif current_user.tutor? %>
-                <%= link_to "授業を登録", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-primary" %>
+                <%= link_to "授業の設定", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-primary" %>
               <!--もしcurrent_userがParentだったら-->
               <% elsif current_user.parent? %>
                 予約ボタン？
