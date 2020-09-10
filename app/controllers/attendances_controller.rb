@@ -48,6 +48,7 @@ class AttendancesController < ApplicationController
   def edit_one_day
     @day = Attendance.find_by(worked_on: params[:worked_on])
     @user = User.find(params[:id])
+
   end
 
   # tutorがattendanceを一日単位でアップデートする
