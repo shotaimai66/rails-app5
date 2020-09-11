@@ -50,7 +50,7 @@ class AttendancesController < ApplicationController
     # @day = Attendance.find_by(worked_on: params[:worked_on])
     # 三項演算子
     # もし指定の日のattendanceがなくてnilだったらnewしたものを、すでにあれば検索したものを、@dayに代入
-    @day = Attendance.find_by(worked_on: params[:worked_on]).nil? ? @user.attendances.new(worked_on: params[:worked_on]) : Attendance.find_by(worked_on: params[:worked_on])
+    @attendance = Attendance.find_by(worked_on: params[:worked_on]).nil? ? @user.attendances.new(worked_on: params[:worked_on]) : Attendance.find_by(worked_on: params[:worked_on])
   end
 
   # tutorがattendanceを一日単位でアップデートする
