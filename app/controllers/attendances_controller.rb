@@ -54,7 +54,54 @@ class AttendancesController < ApplicationController
   end
 
   # tutorがattendanceを一日単位でアップデートする
+  # 更新と新規作成を同時にやっているところに問題がある
+  #attendance が未登録なら新規作成、すでにあるなら更新
   def update_one_day
+    @user = User.find(params[:id])
+
+    # @attendance = Attendance.find_by(user_id: @user.id, worked_on: params[:worked_on]).nil? ? @user.attendances.new(user_id: @user.id) : Attendance.find_by(user_id: @user.id, worked_on: "2020-09-21")
+    
+    # attendance が未登録(nil)なら新規作成
+
+    date_param = params[:user][:attendance][:worked_on]
+
+    if Attendance.find_by(user_id: @user.id, worked_on: date_param).nil?
+      @attendance = @user.attendances.new
+      @attendance.worked_on = date_param
+      @attendance.lesson_status_00 = params[:user][:attendance][:lesson_status_00]
+      @attendance.lesson_status_01 = params[:user][:attendance][:lesson_status_01]
+      @attendance.lesson_status_02 = params[:user][:attendance][:lesson_status_02]
+      @attendance.lesson_status_03 = params[:user][:attendance][:lesson_status_03]
+      @attendance.lesson_status_04 = params[:user][:attendance][:lesson_status_04]
+      @attendance.lesson_status_05 = params[:user][:attendance][:lesson_status_05]
+      @attendance.lesson_status_06 = params[:user][:attendance][:lesson_status_06]
+      @attendance.lesson_status_07 = params[:user][:attendance][:lesson_status_07]
+      @attendance.lesson_status_08 = params[:user][:attendance][:lesson_status_08]
+      @attendance.lesson_status_09 = params[:user][:attendance][:lesson_status_09]
+      @attendance.lesson_status_10 = params[:user][:attendance][:lesson_status_10]
+      @attendance.lesson_status_11 = params[:user][:attendance][:lesson_status_11]
+      @attendance.lesson_status_12 = params[:user][:attendance][:lesson_status_12]
+      @attendance.lesson_status_13 = params[:user][:attendance][:lesson_status_13]
+      @attendance.lesson_status_14 = params[:user][:attendance][:lesson_status_14]
+      @attendance.lesson_status_15 = params[:user][:attendance][:lesson_status_15]
+      @attendance.lesson_status_16 = params[:user][:attendance][:lesson_status_16]
+      @attendance.lesson_status_17 = params[:user][:attendance][:lesson_status_17]
+      @attendance.lesson_status_18 = params[:user][:attendance][:lesson_status_18]
+      @attendance.lesson_status_19 = params[:user][:attendance][:lesson_status_19]
+      @attendance.lesson_status_20 = params[:user][:attendance][:lesson_status_20]
+      @attendance.lesson_status_21 = params[:user][:attendance][:lesson_status_21]
+      @attendance.lesson_status_22 = params[:user][:attendance][:lesson_status_22]
+      @attendance.lesson_status_23 = params[:user][:attendance][:lesson_status_23]
+      @attendance.save
+      # @attendance = @user.attendances.create!(attendances_params)
+
+
+    # if @attendance.save(attendances_params)
+    #   flash[:success] = "#{@user.name}の授業可能時間を更新しました。"
+    # else
+    #   flash[:danger] = "#{@user.name}の授業可能時間は失敗しました。<br>" + @attendance.errors.full_messages.join("<br>")
+    end
+    redirect_to @user
   end
 
 
@@ -62,7 +109,7 @@ class AttendancesController < ApplicationController
   private
   # 1ヶ月分の勤怠情報を扱います
   def attendances_params
-    params.require(:user).permit(attendances: [:started_at, :finished_at, :note, :worked_on, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
+    params.require(:user).permit(attendances: [:started_at, :finished_at, :note, :worked_on, :user_id, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
   end
   
   # beforeフィルター
