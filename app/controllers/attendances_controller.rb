@@ -64,7 +64,7 @@ class AttendancesController < ApplicationController
     # attendance が未登録(nil)なら新規作成
 
     date_param = params[:user][:attendance][:worked_on]
-
+    # もしuser_idとworked_onでAttendanceを検索してnilだったらnewしてパラメーターでsave
     if Attendance.find_by(user_id: @user.id, worked_on: date_param).nil?
       @attendance = @user.attendances.new
       @attendance.worked_on = date_param
@@ -92,7 +92,13 @@ class AttendancesController < ApplicationController
       @attendance.lesson_status_21 = params[:user][:attendance][:lesson_status_21]
       @attendance.lesson_status_22 = params[:user][:attendance][:lesson_status_22]
       @attendance.lesson_status_23 = params[:user][:attendance][:lesson_status_23]
-      @attendance.save
+      if @attendance.save
+        flash[:success] = '授業可能時間を設定しました。'
+        redirect_to @user 
+      else
+        flash[:danger] = '授業可能時間の設定に失敗しました。'
+        redirect_to @user
+      end
       # @attendance = @user.attendances.create!(attendances_params)
 
 
@@ -101,7 +107,7 @@ class AttendancesController < ApplicationController
     # else
     #   flash[:danger] = "#{@user.name}の授業可能時間は失敗しました。<br>" + @attendance.errors.full_messages.join("<br>")
     end
-    redirect_to @user
+
   end
 
 
