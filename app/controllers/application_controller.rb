@@ -54,10 +54,13 @@ class ApplicationController < ActionController::Base
     # 前月の日を求める　月曜始まりを日曜始まりへ変更 そして１ヶ月たす
     # 月初が日曜日だったらone_monthに前月の日数を入れる
     @day_of_the_week > 1 ? one_month = ( (@first_day.all_week.to_a.unshift(@first_day.all_week.to_a.slice(0).prev_day)).to_a.slice(0..(@day_of_the_week-1)) + one_month ) : one_month
-    # @one_monthに来月の日にちをたす
+    # @one_monthに来月の日にちをたす。
     @one_month_calendar = one_month.to_a + next_month.to_a.slice(0..(42 - one_month.count - 1))
 
-
+    # URLのidからTutorを探し@userへ代入
+    @user = User.find(params[:id])
+    # tutorに紐付く１ヶ月分のattendancesを取得。数はある分だけ取れる
+    @attendances = @user.attendances.where(worked_on: @first_day..@last_day)
   #   unless one_month.count == @attendances.count # それぞれの件数（日数）が一致するか評価します。
   #     ActiveRecord::Base.transaction do # トランザクションを開始します。
   #       # 繰り返し処理により、1ヶ月分の勤怠データを生成します。

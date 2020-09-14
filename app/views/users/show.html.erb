@@ -103,19 +103,32 @@
           <% week.each do |day| %>
             <td>
 
-
+              <!--日付表示　Date型 xxx.dayで日付を表示するメソッド-->
               <%= day.day %><br>
-
+              
               <!--もし昨日以降の古い日付 もしくは今月の最終日よりも未来日だったら(タイムゾーンつきで）xを表示  -->
               <% if (day.to_time.in_time_zone('Asia/Tokyo') < Date.current) || (day.to_time.in_time_zone('Asia/Tokyo') > @last_day) %>
                 <button class="btn btn-default" disabled>x</button>
 
               <!--もしcurrent_userがTutorだったら-->
               <% elsif current_user.tutor? %>
-                <%= link_to "授業の設定", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-primary" %>
+                <!--もし授業を設定したattenda nceが存在したら-->
+                <% if @attendances.present? %>
+                  <% @attendances.each do |attendanece_i|%>
+                    <!--attendance_iのインスタンスの日付と、Date型のカレンダー日付が同じなら、授業を表示-->
+                    <% if attendanece_i.worked_on == day %>
+                      <%= link_to "授業の設定あり", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-danger" %>
+                    <% else %>
+                      <%= link_to "授業を設定する", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-default" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                
+                
               <!--もしcurrent_userがParentだったら-->
               <% elsif current_user.parent? %>
                 予約ボタン？
+                
               <% elsif current_user.admin? %>
                 機能しないボタンのみ？
               <% end %>
