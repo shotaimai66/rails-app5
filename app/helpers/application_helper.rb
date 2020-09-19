@@ -37,7 +37,67 @@ module ApplicationHelper
     lesson_time_array.push(attendance.lesson_status_00)
     lesson_time_array.push(attendance.lesson_status_00)
     lesson_time_array.push(attendance.lesson_status_00)
-    return "授業の設定あ-り"
+    
+    # ボタンに表示する授業可能時間の最初の時間をfirst_timeに入れる
+    first_time = lesson_time_array.find_index { |n| n == 1 }
+
+    # 授業可能時間のステータスが０時から23時分まで配列に入っているのでreverseして、その日の最後の授業可能時間を求める
+    lesson_time_array_reverse = lesson_time_array.reverse
+    last_time = lesson_time_array_reverse.find_index { |n| n == 1 }
+
+    if last_time == 0
+      last_time = 23
+    elsif last_time == 1
+      last_time = 22
+    elsif last_time == 2
+      last_time = 21
+    elsif last_time == 3
+      last_time = 20
+    elsif last_time == 4
+      last_time = 19
+    elsif last_time == 5
+      last_time = 18
+    elsif last_time == 6
+      last_time = 17
+    elsif last_time == 7
+      last_time = 16
+    elsif last_time == 8
+      last_time = 15
+    elsif last_time == 9
+      last_time = 14
+    elsif last_time == 10
+      last_time = 13
+    elsif last_time == 11
+      last_time = 12
+    elsif last_time == 12
+      last_time = 11
+    elsif last_time == 13
+      last_time = 10
+    elsif last_time == 14
+      last_time = 9
+    elsif last_time == 15
+      last_time = 8
+    elsif last_time == 16
+      last_time = 7
+    elsif last_time == 17
+      last_time = 6
+    elsif last_time == 18
+      last_time = 5
+    elsif last_time == 19
+      last_time = 4
+    elsif last_time == 20
+      last_time = 3
+    elsif last_time == 21
+      last_time = 2
+    elsif last_time == 22
+      last_time = 1
+    elsif last_time == 23
+      last_time = 0
+      # else
+      #   どの値にも一致しない場合に行う処理
+    end
+
+    return "#{first_time}:00〜#{last_time}:59"
   end
   
 end
