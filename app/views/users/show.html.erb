@@ -106,10 +106,15 @@
               <!--日付表示　Date型 xxx.dayで日付を表示するメソッド-->
               <%= day.day %><br>
               
-              <!--もし昨日以降の古い日付 もしくは今月の最終日よりも未来日だったら(タイムゾーンつきで）xを表示  -->
-              <% if (day.to_time.in_time_zone('Asia/Tokyo') < Date.current) || (day.to_time.in_time_zone('Asia/Tokyo') > @last_day) %>
+              <!--もし昨日以降の古い日付(タイムゾーンつきで）xを表示  -->
+              <% if day.to_time.in_time_zone('Asia/Tokyo') < Date.current %>
                 <button class="btn btn-default" disabled>x</button>
 
+
+
+              <!--もし今月の最終日よりも未来日だったら(タイムゾーンつきで）-を表示  -->
+              <% elsif day.to_time.in_time_zone('Asia/Tokyo') > @last_day %>
+                <button class="btn btn-default" disabled>-</button>
 
 
               <!--もしcurrent_userがTutorだったら-->
