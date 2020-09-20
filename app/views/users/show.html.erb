@@ -110,22 +110,25 @@
               <% if (day.to_time.in_time_zone('Asia/Tokyo') < Date.current) || (day.to_time.in_time_zone('Asia/Tokyo') > @last_day) %>
                 <button class="btn btn-default" disabled>x</button>
 
+
+
               <!--もしcurrent_userがTutorだったら-->
               <% elsif current_user.tutor? %>
-                <!--もし授業を設定したattenda nceが存在したら-->
+                <!--もしattendancesが存在したら-->
                 <% if @attendances.present? %>
                   <% @attendances.each do |attendance_i|%>
                     <!--attendance_iのインスタンスの日付と、Date型のカレンダー日付が同じなら、授業を表示-->
                     <% if attendance_i.worked_on == day %>
-                    
                       <%= link_to first_and_last_lesson_time(@user, attendance_i), attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-danger" %>
-                    <% else %>
-                      <%= link_to "授業を設定する", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-default" %>
                     <% end %>
                   <% end %>
                 <% end %>
-                
-                
+                <% if @user.attendances.where(user_id: @user.id, worked_on: day) == [] %>
+                  <%= link_to "授業を設定する", attendances_edit_one_day_user_path(@user, worked_on: day), remote: true, class: "btn btn-default" %>
+                <% end %>
+
+
+
               <!--もしcurrent_userがParentだったら-->
               <% elsif current_user.parent? %>
                 予約ボタン？
