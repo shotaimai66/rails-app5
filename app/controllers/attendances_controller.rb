@@ -100,63 +100,6 @@ class AttendancesController < ApplicationController
         flash[:danger] = '授業可能時間の設定に失敗しました。'
         redirect_to @user
       end
-    # それ以外（パラメーターで検索してすでにアテンダンスがある場合）は、検索したインスタンスを取得しパラメーターで更新する
-    # else
-    # attendance = Attendance.find_by(user_id: @user.id, worked_on: date_param)
-    # if attendance.update_attributes(date_param)
-    #   flash[:success] = '授業可能時間を設定しました。'
-    #   redirect_to @user 
-    # else
-    #   flash[:danger] = '授業可能時間の設定に失敗しました。'
-    #   redirect_to @user
-    # end
-    # attendance が未登録(nil)なら新規作成
-
-    # date_param = params[:user][:attendance][:worked_on]
-    # もしuser_idとworked_onでAttendanceを検索してnilだったらnewしてパラメーターでsave
-    # if Attendance.find_by(user_id: @user.id, worked_on: date_param).nil?
-    #   @attendance = @user.attendances.new
-    #   @attendance.worked_on = date_param
-    #   @attendance.lesson_status_00 = params[:user][:attendance][:lesson_status_00]
-    #   @attendance.lesson_status_01 = params[:user][:attendance][:lesson_status_01]
-    #   @attendance.lesson_status_02 = params[:user][:attendance][:lesson_status_02]
-    #   @attendance.lesson_status_03 = params[:user][:attendance][:lesson_status_03]
-    #   @attendance.lesson_status_04 = params[:user][:attendance][:lesson_status_04]
-      # @attendance.lesson_status_05 = params[:user][:attendance][:lesson_status_05]
-      # @attendance.lesson_status_06 = params[:user][:attendance][:lesson_status_06]
-      # @attendance.lesson_status_07 = params[:user][:attendance][:lesson_status_07]
-      # @attendance.lesson_status_08 = params[:user][:attendance][:lesson_status_08]
-      # @attendance.lesson_status_09 = params[:user][:attendance][:lesson_status_09]
-      # @attendance.lesson_status_10 = params[:user][:attendance][:lesson_status_10]
-      # @attendance.lesson_status_11 = params[:user][:attendance][:lesson_status_11]
-      # @attendance.lesson_status_12 = params[:user][:attendance][:lesson_status_12]
-      # @attendance.lesson_status_13 = params[:user][:attendance][:lesson_status_13]
-      # @attendance.lesson_status_14 = params[:user][:attendance][:lesson_status_14]
-      # @attendance.lesson_status_15 = params[:user][:attendance][:lesson_status_15]
-      # @attendance.lesson_status_16 = params[:user][:attendance][:lesson_status_16]
-      # @attendance.lesson_status_17 = params[:user][:attendance][:lesson_status_17]
-      # @attendance.lesson_status_18 = params[:user][:attendance][:lesson_status_18]
-      # @attendance.lesson_status_19 = params[:user][:attendance][:lesson_status_19]
-      # @attendance.lesson_status_20 = params[:user][:attendance][:lesson_status_20]
-      # @attendance.lesson_status_21 = params[:user][:attendance][:lesson_status_21]
-      # @attendance.lesson_status_22 = params[:user][:attendance][:lesson_status_22]
-      # @attendance.lesson_status_23 = params[:user][:attendance][:lesson_status_23]
-      # if @attendance.save
-      #   flash[:success] = '授業可能時間を設定しました。'
-      #   redirect_to @user 
-      # else
-      #   flash[:danger] = '授業可能時間の設定に失敗しました。'
-      #   redirect_to @user
-      # end
-      # @attendance = @user.attendances.create!(attendances_params)
-
-
-    # if @attendance.save(attendances_params)
-    #   flash[:success] = "#{@user.name}の授業可能時間を更新しました。"
-    # else
-    #   flash[:danger] = "#{@user.name}の授業可能時間は失敗しました。<br>" + @attendance.errors.full_messages.join("<br>")
-    # end
-    # end
   end
 
 

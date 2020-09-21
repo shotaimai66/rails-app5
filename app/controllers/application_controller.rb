@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
     # URLのidからTutorを探し@userへ代入
     @user = User.find(params[:id])
     # tutorに紐付く１ヶ月分のattendances(授業可能時間が設定されたもがattendance)を取得。数はある分だけ取れる
-    # これがダメなんじゃない？
+    # ないときは[ ]が返ってくる
     @attendances = @user.attendances.where(worked_on: @first_day..@last_day)
   #   unless one_month.count == @attendances.count # それぞれの件数（日数）が一致するか評価します。
   #     ActiveRecord::Base.transaction do # トランザクションを開始します。

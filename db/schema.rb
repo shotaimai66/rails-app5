@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200906234819) do
+ActiveRecord::Schema.define(version: 20200921032827) do
 
   create_table "attendances", force: :cascade do |t|
     t.date "worked_on"
@@ -44,6 +44,30 @@ ActiveRecord::Schema.define(version: 20200906234819) do
     t.integer "lesson_status_21", default: 0
     t.integer "lesson_status_22", default: 0
     t.integer "lesson_status_23", default: 0
+    t.integer "lesson_00_parent_id"
+    t.integer "lesson_01_parent_id"
+    t.integer "lesson_02_parent_id"
+    t.integer "lesson_03_parent_id"
+    t.integer "lesson_04_parent_id"
+    t.integer "lesson_05_parent_id"
+    t.integer "lesson_06_parent_id"
+    t.integer "lesson_07_parent_id"
+    t.integer "lesson_08_parent_id"
+    t.integer "lesson_09_parent_id"
+    t.integer "lesson_10_parent_id"
+    t.integer "lesson_11_parent_id"
+    t.integer "lesson_12_parent_id"
+    t.integer "lesson_13_parent_id"
+    t.integer "lesson_14_parent_id"
+    t.integer "lesson_15_parent_id"
+    t.integer "lesson_16_parent_id"
+    t.integer "lesson_17_parent_id"
+    t.integer "lesson_18_parent_id"
+    t.integer "lesson_19_parent_id"
+    t.integer "lesson_20_parent_id"
+    t.integer "lesson_21_parent_id"
+    t.integer "lesson_22_parent_id"
+    t.integer "lesson_23_parent_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
