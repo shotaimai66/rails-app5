@@ -105,7 +105,7 @@ class AttendancesController < ApplicationController
   # parentが授業の予約申請を行う編集画面
   def edit_reservation
     @user = User.find(params[:id])
-    @attendance = Attendance.find_by(user_id: @user_id, worked_on: params[:worked_on])
+    @attendance = Attendance.find_by(worked_on: params[:worked_on], user_id: @user.id)
   end
 
   # parentが授業の予約申請を行う保存処理
