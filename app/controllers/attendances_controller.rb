@@ -105,8 +105,7 @@ class AttendancesController < ApplicationController
   # parentが授業の予約申請を行う編集画面
   def edit_reservation
     @user = User.find(params[:id])
-    # Tutorが設定している予約状況を表示するため、利用可能なattendanceインスタンスを @available_daysに配列？で入れる
-    @available_days = @user.attendances.where.(worked_on: params[:worked_on])
+    @attendance = Attendance.find_by(user_id: @user_id, worked_on: params[:worked_on])
   end
 
   # parentが授業の予約申請を行う保存処理
