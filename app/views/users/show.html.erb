@@ -136,8 +136,17 @@
 
               <!--もしcurrent_userがParentだったら-->
               <% elsif current_user.parent? %>
-                予約ボタン？
-                
+                <% if @attendances.present? %>
+                  <% @attendances.each do |attendance_i|%>
+                    <!--attendance_iのインスタンスの日付と、Date型のカレンダー日付が同じなら、授業を表示-->
+                    <% if attendance_i.worked_on == day %>
+                      <%= link_to first_and_last_lesson_time(@user, attendance_i), attendances_edit_reservation_user_path(@user, worked_on: day), remote: true, class: "btn btn-danger" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+
+
               <% elsif current_user.admin? %>
                 機能しないボタンのみ？
               <% end %>
@@ -155,3 +164,7 @@
 
 <!--Tutorが一日の変更をするモーダルウインドウ表示-->
 <div id="edit_one_day" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+<!--parentが授業の予約申請をするモーダルウインドウ表示-->
+<div id="edit_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+

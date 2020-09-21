@@ -19,11 +19,7 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <% if current_user.admin? %>
-            <%= link_to user.name, user %>
-          <% else %>
-            <%= user.name %>
-          <% end %>
+          <%= link_to user.name, user %>
         </td>
         <td class="center"><%= user.department.present? ? user.department : "未所属" %></td>
         <% if current_user.admin? %>
