@@ -72,7 +72,7 @@
                   <td>
                     <% if current_user.parent %>
                       <% if als[i] == 1 %>
-                        <%= link_to lesson_status_text, attendances_update_reservation_user_path(user_id: @user, worked_on: @attendance.worked_on, lesson_status_time: i, parent_id: current_user.id) %>
+                        <%= link_to lesson_status_text, attendances_confirm_reservation_user_path(user_id: @user, worked_on: @attendance.worked_on, lesson_status_time: i, parent_id: current_user.id) %>
                       <% else %>
                         <%= lesson_status_text %>
                       <% end %>

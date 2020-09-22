@@ -21,8 +21,11 @@ Rails.application.routes.draw do
       # tutorが授業可能時間を編集・保存するルーティング
       get 'attendances/edit_one_day'           #/users/:id/attendances/edit_one_day(.:format)	   attendances_edit_one_day_user_path
       patch 'attendances/update_one_day'       #/users/:id/attendances/update_one_day(.:format)  attendances_update_one_day_user_path
-      # parentが授業予約申請を編集・保存するルーティング
+      # parentが授業予約申請を編集するルーティング
       get 'attendances/edit_reservation'           #/users/:id/attendances/edit_reservation(.:format)	   attendances_edit_reservation_user_path
+      # parentが授業予約申請を確認するルーティング
+      get 'attendances/confirm_reservation'           #/users/:id/attendances/confirm_reservation(.:format)	   attendances_confirm_reservation_user_path
+      # parentがした授業予約申請を保存するルーティング
       patch 'attendances/update_reservation'       #/users/:id/attendances/update_reservation(.:format)  attendances_update_reservation_user_path
 
     end

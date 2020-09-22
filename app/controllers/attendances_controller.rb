@@ -135,9 +135,17 @@ class AttendancesController < ApplicationController
     @attendance_lesson_statuses = attendance_lesson_statuses
   end
 
+  # parentが授業の予約申請確認を行う画面
+  def confirm_reservation
+    @attendance = Attendance.find(params[:id])
+    @user = User.find(params[:user_id])
+    @lesson_status_time = params[:lesson_status_time]
+    @parent = User.find(params[:parent_id])
+  end
+
   # parentが授業の予約申請を行う保存処理
   def update_reservation
-    debugger
+
   end
 
   private

@@ -1,0 +1,8 @@
+<% provide(:title, "テスト") %>
+<h1>家庭教師予約申請確認</h1>
+
+<p><%= @attendance.worked_on %></p>
+<p>家庭教師<%= @user.name %></p>
+<p><%= "#{@parent.name}さん、家庭教師#{@user.name}さんの#{@lesson_status_time}:00〜#{@lesson_status_time}:59の授業を予約申請をしますか？"%></p>
+
+
