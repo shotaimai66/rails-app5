@@ -106,10 +106,38 @@ class AttendancesController < ApplicationController
   def edit_reservation
     @user = User.find(params[:id])
     @attendance = Attendance.find_by(worked_on: params[:worked_on], user_id: @user.id)
+    # @attendanceの0〜２３時までの値を配列attendance_lesson_statusesに入れ、＠attendance_lesson_statusesに代入
+    attendance_lesson_statuses = []
+    attendance_lesson_statuses.push(@attendance.lesson_status_00)
+    attendance_lesson_statuses.push(@attendance.lesson_status_01)
+    attendance_lesson_statuses.push(@attendance.lesson_status_02)
+    attendance_lesson_statuses.push(@attendance.lesson_status_03)
+    attendance_lesson_statuses.push(@attendance.lesson_status_04)
+    attendance_lesson_statuses.push(@attendance.lesson_status_05)
+    attendance_lesson_statuses.push(@attendance.lesson_status_06)
+    attendance_lesson_statuses.push(@attendance.lesson_status_07)
+    attendance_lesson_statuses.push(@attendance.lesson_status_08)
+    attendance_lesson_statuses.push(@attendance.lesson_status_09)
+    attendance_lesson_statuses.push(@attendance.lesson_status_10)
+    attendance_lesson_statuses.push(@attendance.lesson_status_11)
+    attendance_lesson_statuses.push(@attendance.lesson_status_12)
+    attendance_lesson_statuses.push(@attendance.lesson_status_13)
+    attendance_lesson_statuses.push(@attendance.lesson_status_14)
+    attendance_lesson_statuses.push(@attendance.lesson_status_15)
+    attendance_lesson_statuses.push(@attendance.lesson_status_16)
+    attendance_lesson_statuses.push(@attendance.lesson_status_17)
+    attendance_lesson_statuses.push(@attendance.lesson_status_18)
+    attendance_lesson_statuses.push(@attendance.lesson_status_19)
+    attendance_lesson_statuses.push(@attendance.lesson_status_20)
+    attendance_lesson_statuses.push(@attendance.lesson_status_21)
+    attendance_lesson_statuses.push(@attendance.lesson_status_22)
+    attendance_lesson_statuses.push(@attendance.lesson_status_23)
+    @attendance_lesson_statuses = attendance_lesson_statuses
   end
 
   # parentが授業の予約申請を行う保存処理
   def update_reservation
+    debugger
   end
 
   private
