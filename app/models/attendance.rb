@@ -1,5 +1,7 @@
 class Attendance < ApplicationRecord
   belongs_to :user
+
+  attr_accessor :attendance_id      #モデルに基づかない項目をform_withで送信する場合に記載
   
   validates :worked_on, presence: true
   validates :note, length: { maximum:50 }

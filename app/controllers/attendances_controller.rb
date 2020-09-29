@@ -137,7 +137,7 @@ class AttendancesController < ApplicationController
 
   # parentが授業の予約申請確認を行う画面
   def confirm_reservation
-    @attendance = Attendance.find(params[:id])
+    @attendance = Attendance.find(params[:attendance_id])
     @user = User.find(params[:user_id])
     @lesson_status_time = params[:lesson_status_time]
     @parent = User.find(params[:parent_id])
@@ -145,13 +145,95 @@ class AttendancesController < ApplicationController
 
   # parentが授業の予約申請を行う保存処理
   def update_reservation
+    # @user = User.find(params[:attendance][:user_id])
+    # redirect_to @user
+    # @attendance = Attendance.find_by(worked_on: params[:worked_on], user_id: @user.id)
 
+    # attendances_params.each do |id, item|
+      # 
+    @attendance = Attendance.find(params[:user][:attendance][:attendance_id])
+    @user = User.find(@attendance.user_id)
+      # @attendance = Attendance.find(id)
+      # @user = User.find(@attendance.user_id)
+
+      # param_lesson_status_timeにはindex iがStringで入っている
+      param_lesson_status_time = params[:user][:attendance][:lesson_time]
+      if param_lesson_status_time == "0"
+        @attendance.lesson_status_00 = 2      # ステータス２は申請中
+      elsif param_lesson_status_time == "1"
+        @attendance.lesson_status_01 = 2
+      elsif param_lesson_status_time == "2"
+        @attendance.lesson_status_02 = 2
+      elsif param_lesson_status_time == "3"
+        @attendance.lesson_status_03 = 2
+      elsif param_lesson_status_time == "4"
+        @attendance.lesson_status_04 = 2
+      elsif param_lesson_status_time == "5"
+        @attendance.lesson_status_05 = 2
+      elsif param_lesson_status_time == "6"
+        @attendance.lesson_status_06 = 2
+      elsif param_lesson_status_time == "7"
+        @attendance.lesson_status_07 = 2
+      elsif param_lesson_status_time == "8"
+        @attendance.lesson_status_08 = 2
+      elsif param_lesson_status_time == "9"
+        @attendance.lesson_status_09 = 2
+      elsif param_lesson_status_time == "10"
+        @attendance.lesson_status_10 = 2
+      elsif param_lesson_status_time == "11"
+        @attendance.lesson_status_11 = 2
+      elsif param_lesson_status_time == "12"
+        @attendance.lesson_status_12 = 2
+      elsif param_lesson_status_time == "13"
+        @attendance.lesson_status_13 = 2
+      elsif param_lesson_status_time == "14"
+        @attendance.lesson_status_14 = 2
+      elsif param_lesson_status_time == "15"
+        @attendance.lesson_status_15 = 2
+      elsif param_lesson_status_time == "16"
+        @attendance.lesson_status_16 = 2
+      elsif param_lesson_status_time == "17"
+        @attendance.lesson_status_17 = 2
+      elsif param_lesson_status_time == "18"
+        @attendance.lesson_status_18 = 2
+      elsif param_lesson_status_time == "19"
+        @attendance.lesson_status_19 = 2
+      elsif param_lesson_status_time == "20"
+        @attendance.lesson_status_20 = 2
+      elsif param_lesson_status_time == "21"
+        @attendance.lesson_status_21 = 2
+      elsif param_lesson_status_time == "22"
+        @attendance.lesson_status_22 = 2
+      elsif param_lesson_status_time == "23"
+        @attendance.lesson_status_23 = 2
+      end
+      
+      if @attendance.save
+        flash[:success] = "家庭教師　#{@user.name}さんの#{@attendance.worked_on}　#{param_lesson_status_time}時の授業の予約申請を送信しました。"
+        redirect_to @user
+      else
+        flash[:danger] = "予約申請に失敗しました。"
+        redirect_to @user
+      end
+        
+      # param_lesson_status_time = ""
+      # if params[:user][:attendances][id][:lesson_time].length == 1
+      #   param_lesson_status_time = "0" + params[:user][:attendances][id][:lesson_time]
+      # elsif params[:user][:attendances][id][:lesson_time].length == 2
+      #   param_lesson_status_time = params[:user][:attendances][id][:lesson_time] 
+      # end
+
+      # @column_name = "lesson_status_" + param_lesson_status_time
+
+      # @attendance.send(@column_name)
+      # ここに一つ一つif文で書いていこう
+    # end      
   end
 
   private
   # 1ヶ月分の勤怠情報を扱います
   def attendances_params
-    params.require(:user).permit(attendances: [:started_at, :finished_at, :note, :worked_on, :user_id, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
+    params.require(:user).permit(attendances: [:attendance_id, :started_at, :finished_at, :note, :worked_on, :user_id, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
   end
   
   # beforeフィルター

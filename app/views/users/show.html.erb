@@ -140,7 +140,7 @@
                   <% @attendances.each do |attendance_i|%>
                     <!--attendance_iのインスタンスの日付と、Date型のカレンダー日付が同じなら、授業を表示-->
                     <% if attendance_i.worked_on == day %>
-                      <%= link_to first_and_last_lesson_time(@user, attendance_i), attendances_edit_reservation_user_path(@user, worked_on: day,parent_id: current_user.id), remote: true, class: "btn btn-danger" %>
+                      <%= link_to first_and_last_lesson_time(@user, attendance_i), attendances_edit_reservation_user_path(@user,attendance_id: attendance_i.id, worked_on: day,parent_id: current_user.id), remote: true, class: "btn btn-danger" %>
                     <% end %>
                   <% end %>
                 <% end %>

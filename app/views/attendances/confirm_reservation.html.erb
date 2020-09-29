@@ -19,7 +19,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                        <%= f.fields_for "attendances[]", @attendance do |af| %>
+                        <%= f.fields_for @attendance do |af| %>
                         <%
                           css_class = 
                           case $days_of_the_week[@attendance.worked_on.wday]
@@ -40,7 +40,8 @@
                               <%= af.hidden_field :user_id, :value => @attendance.user_id %>
                               <%= af.hidden_field :lesson_time, :value=> @lesson_status_time %>
                               <%= af.hidden_field :parent_id, :value=> @parent.id %>
-                              <%= af.hidden_field :lesson_status, :value=> 3 %>
+                              <%= af.hidden_field :lesson_status, :value=> 2 %>
+                              <%= af.hidden_field :attendance_id, :value=> @attendance.id %>
                         </tr>
                     <% end %>
 
