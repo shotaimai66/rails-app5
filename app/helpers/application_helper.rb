@@ -11,7 +11,7 @@ module ApplicationHelper
   end
   
   # Attendanceモデルのオブジェクトを入れるとその日の授業の最初の時間と、終わりの時間時間を表示する文言を返します
-  # 引き数はAttendanceモデル
+  # 引き数は(Userオブジェクト, Attendanceオブジェクト)
   def first_and_last_lesson_time(user, attendance)
     lesson_time_array = []
     lesson_time_array.push(attendance.lesson_status_00)
@@ -38,7 +38,7 @@ module ApplicationHelper
     lesson_time_array.push(attendance.lesson_status_21)
     lesson_time_array.push(attendance.lesson_status_22)
     lesson_time_array.push(attendance.lesson_status_23)
-    
+
     # ボタンに表示する授業可能時間の最初の時間をfirst_timeに入れる
     first_time = lesson_time_array.find_index { |n| n == 1 }
 
