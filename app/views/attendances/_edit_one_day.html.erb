@@ -58,31 +58,176 @@
                   <td><%= @attendance.worked_on %></td>
                   <%= af.hidden_field :worked_on, :value => @attendance.worked_on %>
                     <td class="<%= css_class %>"><%= $days_of_the_week[@attendance.worked_on.wday] %></td>
+                    <!--もし授業可能時間を設定した日が、本日だったら、現在時刻以前は表示しない-->
                     <% if @attendance.worked_on == Date.current %>
-                      <td><%= af.check_box :lesson_status_00 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_01 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_02 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_03 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_04 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_05 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_06 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_07 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_08 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_09 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_10 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_11 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_12 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_13 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_14 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_15 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_16 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_17 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_18 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_19 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_20 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_21 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_22 , prompt: "" %></td>  
-                      <td><%= af.check_box :lesson_status_23 , prompt: "" %></td>
+                      <td>
+                        <% if Time.current.hour > 0 || Time.current.hour == 0 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_00 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 1 || Time.current.hour == 1 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_01 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 2 || Time.current.hour == 2 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_02 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 3 || Time.current.hour == 3 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_03 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 4 || Time.current.hour == 4 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_04 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 5 || Time.current.hour == 5 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_05 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 6 || Time.current.hour == 6 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_06 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 7 || Time.current.hour == 7 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_07 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 8 || Time.current.hour == 8 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_08 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 9 || Time.current.hour == 9 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_09 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 10 || Time.current.hour == 10 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_10 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 11 || Time.current.hour == 11 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_11 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 12 || Time.current.hour == 12 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_12 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 13 || Time.current.hour == 13 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_13 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 14 || Time.current.hour == 14 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_14 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 15 || Time.current.hour == 15 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_15 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 16 || Time.current.hour == 16 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_16 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 17 || Time.current.hour == 17 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_17 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 18 || Time.current.hour == 18 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_18 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 19 || Time.current.hour == 19 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_19 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 20 || Time.current.hour == 20 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_20 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 21 || Time.current.hour == 21 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_21 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 22 || Time.current.hour == 22 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_22 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 23 || Time.current.hour == 23 %>
+                          <%= "-" %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_23 , prompt: "" %>
+                        <% end %>
+                      </td>
                     <% else %>
                       <td><%= af.check_box :lesson_status_00 , prompt: "" %></td>  
                       <td><%= af.check_box :lesson_status_01 , prompt: "" %></td>  
