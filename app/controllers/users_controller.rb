@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    # @worked_sum = @attendances.where.not(started_at: nil).count
+    # 授業の予約申請を取得し@reservation_applicationsに入れる
+    @reservation_applications = @user.attendances.where(lesson_status_00: 2).or(@user.attendances.where(lesson_status_01: 2)).or(@user.attendances.where(lesson_status_02: 2)).or(@user.attendances.where(lesson_status_03: 2)).or(@user.attendances.where(lesson_status_04: 2)).or(@user.attendances.where(lesson_status_05: 2)).or(@user.attendances.where(lesson_status_06: 2)).or(@user.attendances.where(lesson_status_07: 2)).or(@user.attendances.where(lesson_status_08: 2)).or(@user.attendances.where(lesson_status_09: 2)).or(@user.attendances.where(lesson_status_10: 2)).or(@user.attendances.where(lesson_status_11: 2)).or(@user.attendances.where(lesson_status_12: 2)).or(@user.attendances.where(lesson_status_13: 2)).or(@user.attendances.where(lesson_status_14: 2)).or(@user.attendances.where(lesson_status_15: 2)).or(@user.attendances.where(lesson_status_16: 2)).or(@user.attendances.where(lesson_status_17: 2)).or(@user.attendances.where(lesson_status_18: 2)).or(@user.attendances.where(lesson_status_19: 2)).or(@user.attendances.where(lesson_status_20: 2)).or(@user.attendances.where(lesson_status_21: 2)).or(@user.attendances.where(lesson_status_22: 2)).or(@user.attendances.where(lesson_status_23: 2))
   end
   
   def new

@@ -27,7 +27,9 @@ Rails.application.routes.draw do
       get 'attendances/confirm_reservation'           #/users/:id/attendances/confirm_reservation(.:format)	   attendances_confirm_reservation_user_path
       # parentがした授業予約申請を保存するルーティング
       patch 'attendances/update_reservation'       #/users/:id/attendances/update_reservation(.:format)  attendances_update_reservation_user_path
-
+      # toturが予約申請を承認・否認する編集モーダルを表示するルーティング
+      get 'attendances/check_reservation'         # /users/:id/attendances/check_reservation(.:format)   attendances_check_reservation_user_path
+      patch 'attendances/decide_reservation'      # /users/:id/attendances/decide_reservation(.:format)  attendances_decide_reservation_user_path
     end
     resources :attendances, only: :update
   end

@@ -1,0 +1,122 @@
+<% provide(:class_text, 'basic-info') %>
+
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <!--ここからモーダルの中身-->
+          <h1>家庭教師<%= @user.name %>さんへの家庭教師依頼が来ています。</h1>
+
+          <%= form_with(model: @user, url: attendances_decide_reservation_user_path(date: @first_day), local: true, method: :patch) do |f| %>
+          <table class="table table-bordered table-condensed table-hover" id="table-attendances">
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>曜日</th>
+                <th>0時</th>
+                <th>1時</th>
+                <th>2時</th>
+                <th>3時</th>
+                <th>4時</th>
+                <th>5時</th>
+                <th>6時</th>
+                <th>7時</th>
+                <th>8時</th>
+                <th>9時</th>
+                <th>10時</th>
+                <th>11時</th>
+                <th>12時</th>
+                <th>13時</th>
+                <th>14時</th>
+                <th>15時</th>
+                <th>16時</th>
+                <th>17時</th>
+                <th>18時</th>
+                <th>19時</th>
+                <th>20時</th>
+                <th>21時</th>
+                <th>22時</th>
+                <th>23時</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @reservation_applications.each do |rsv| %>
+              <%
+                css_class = 
+                case $days_of_the_week[rsv.worked_on.wday]
+                when '土'
+                  'text-primary'
+                when '日'
+                  'text-danger'
+                end
+              %>
+              <tr>
+                <td><%= rsv.worked_on %></td>
+                <td><%= $days_of_the_week[rsv.worked_on.wday] %></td>
+                <td><%= rsv.lesson_status_00 %></td>
+                <td><%= rsv.lesson_status_01 %></td>
+                <td><%= rsv.lesson_status_02 %></td>
+                <td><%= rsv.lesson_status_03 %></td>
+                <td><%= rsv.lesson_status_04 %></td>
+                <td><%= rsv.lesson_status_05 %></td>
+                <td><%= rsv.lesson_status_06 %></td>
+                <td><%= rsv.lesson_status_07 %></td>
+                <td><%= rsv.lesson_status_08 %></td>
+                <td><%= rsv.lesson_status_09 %></td>
+                <td><%= rsv.lesson_status_10 %></td>
+                <td><%= rsv.lesson_status_11 %></td>
+                <td><%= rsv.lesson_status_12 %></td>
+                <td><%= rsv.lesson_status_13 %></td>
+                <td><%= rsv.lesson_status_14 %></td>
+                <td><%= rsv.lesson_status_15 %></td>
+                <td><%= rsv.lesson_status_16 %></td>
+                <td><%= rsv.lesson_status_17 %></td>
+                <td><%= rsv.lesson_status_18 %></td>
+                <td><%= rsv.lesson_status_19 %></td>
+                <td><%= rsv.lesson_status_20 %></td>
+                <td><%= rsv.lesson_status_21 %></td>
+                <td><%= rsv.lesson_status_22 %></td>
+                <td><%= rsv.lesson_status_23 %></td>
+              </tr>
+              <tr>
+                <td>依頼者</td>
+                <td></td>
+                <td><%= User.find(rsv.lesson_00_parent_id).name if rsv.lesson_00_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_01_parent_id).name if rsv.lesson_01_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_02_parent_id).name if rsv.lesson_02_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_03_parent_id).name if rsv.lesson_03_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_04_parent_id).name if rsv.lesson_04_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_05_parent_id).name if rsv.lesson_05_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_06_parent_id).name if rsv.lesson_06_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_07_parent_id).name if rsv.lesson_07_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_08_parent_id).name if rsv.lesson_08_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_09_parent_id).name if rsv.lesson_09_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_10_parent_id).name if rsv.lesson_10_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_11_parent_id).name if rsv.lesson_11_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_12_parent_id).name if rsv.lesson_12_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_13_parent_id).name if rsv.lesson_13_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_14_parent_id).name if rsv.lesson_14_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_15_parent_id).name if rsv.lesson_15_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_16_parent_id).name if rsv.lesson_16_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_17_parent_id).name if rsv.lesson_17_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_18_parent_id).name if rsv.lesson_18_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_19_parent_id).name if rsv.lesson_19_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_20_parent_id).name if rsv.lesson_20_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_21_parent_id).name if rsv.lesson_21_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_22_parent_id).name if rsv.lesson_22_parent_id.present? %></td>
+                <td><%= User.find(rsv.lesson_23_parent_id).name if rsv.lesson_23_parent_id.present? %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+            <!--ここまでモーダルの中身-->
+          <% end %><!--form_withのend-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

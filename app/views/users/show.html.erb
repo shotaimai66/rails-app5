@@ -74,6 +74,9 @@
   <%= link_to "→", user_path(date: @first_day.next_month), class: "btn" %>
           
   <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
+  
+  <%= link_to "予約が入りました。ご確認お願いいたします。", attendances_check_reservation_user_path(@user), remote: true, class: "btn btn-danger" if current_user.tutor? && @reservation_applications.present? %>
+
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
@@ -168,3 +171,5 @@
 <!--parentが授業の予約申請をするモーダルウインドウ表示-->
 <div id="edit_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 
+<!--tutorが家庭教師の依頼を承認/否認するモーダルウインドウ表示-->
+<div id="check_reservation" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

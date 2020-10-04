@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       store_location
       flash[:danger] = "ログインしてください。"
       redirect_to login_url
-     end
+    end
   end
     
   # アクセスしたユーザーが現在ログインしているユーザーか確認します。
