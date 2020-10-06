@@ -110,9 +110,213 @@
                 <td><%= User.find(rsv.lesson_22_parent_id).name if rsv.lesson_22_parent_id.present? %></td>
                 <td><%= User.find(rsv.lesson_23_parent_id).name if rsv.lesson_23_parent_id.present? %></td>
               </tr>
-              <% end %>
+              <%= f.fields_for "attendances[]", rsv do |attendance| %>
+                <tr>
+                  <td>承認</td>
+                  <td></td>
+                  <td>
+                    <% if rsv.lesson_status_00 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_0, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_0, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_0, :refuse %>
+                      <%= attendance.label :tutor_checker_0, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_01 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_1, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_1, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_1, :refuse %>
+                      <%= attendance.label :tutor_checker_1, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_02 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_2, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_2, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_2, :refuse %>
+                      <%= attendance.label :tutor_checker_2, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_03 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_3, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_3, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_3, :refuse %>
+                      <%= attendance.label :tutor_checker_3, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_04 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_4, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_4, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_4, :refuse %>
+                      <%= attendance.label :tutor_checker_4, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_05 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_5, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_5, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_5, :refuse %>
+                      <%= attendance.label :tutor_checker_5, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_06 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_6, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_6, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_6, :refuse %>
+                      <%= attendance.label :tutor_checker_6, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_07 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_7, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_7, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_7, :refuse %>
+                      <%= attendance.label :tutor_checker_7, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_08 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_8, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_8, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_8, :refuse %>
+                      <%= attendance.label :tutor_checker_8, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_09 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_9, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_9, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_9, :refuse %>
+                      <%= attendance.label :tutor_checker_9, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_10 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_10, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_10, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_10, :refuse %>
+                      <%= attendance.label :tutor_checker_10, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_11 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_11, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_11, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_11, :refuse %>
+                      <%= attendance.label :tutor_checker_11, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_12 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_12, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_12, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_12, :refuse %>
+                      <%= attendance.label :tutor_checker_12, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_13 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_13, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_13, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_13, :refuse %>
+                      <%= attendance.label :tutor_checker_13, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_14 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_14, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_14, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_14, :refuse %>
+                      <%= attendance.label :tutor_checker_14, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_15 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_15, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_15, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_15, :refuse %>
+                      <%= attendance.label :tutor_checker_15, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_16 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_16, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_16, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_16, :refuse %>
+                      <%= attendance.label :tutor_checker_16, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_17 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_17, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_17, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_17, :refuse %>
+                      <%= attendance.label :tutor_checker_17, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_18 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_18, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_18, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_18, :refuse %>
+                      <%= attendance.label :tutor_checker_18, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_19 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_19, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_19, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_19, :refuse %>
+                      <%= attendance.label :tutor_checker_19, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_20 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_20, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_20, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_20, :refuse %>
+                      <%= attendance.label :tutor_checker_20, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_21 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_21, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_21, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_0, :refuse %>
+                      <%= attendance.label :tutor_checker_21, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_22 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_22, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_22, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_22, :refuse %>
+                      <%= attendance.label :tutor_checker_22, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if rsv.lesson_status_23 == 2 %>
+                      <%= attendance.radio_button :tutor_checker_23, :accept, checked: true %>
+                      <%= attendance.label :tutor_checker_23, "引受ける", {value: :accept, style: "display: inline-block;"} %>
+                      <%= attendance.radio_button :tutor_checker_23, :refuse %>
+                      <%= attendance.label :tutor_checker_23, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %><!--f.fields_for "attendances[]", rsv do |attendance| のend-->
+              <% end %><!--@reservation_applications.each do |rsv| のend-->
             </tbody>
           </table>
+          
+          <div class="center">
+            <%= link_to "キャンセル", user_path(@user), class: "btn btn-lg btn-default" %> 
+            <%= f.submit "確定する", class: "btn btn-lg btn-danger" %>
+          </div>
+          
             <!--ここまでモーダルの中身-->
           <% end %><!--form_withのend-->
         </div>

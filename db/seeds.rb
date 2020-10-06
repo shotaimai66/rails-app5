@@ -16,7 +16,7 @@ User.create!(name: "システム管理者",
              parent: false,
              admin: true)
 
-User.create!(name: "先生１",
+User.create!(name: "先生2",
              email: "sample2@email.com",
              password: "password",
              password_confirmation: "password",
@@ -24,8 +24,40 @@ User.create!(name: "先生１",
              parent: false,
              admin: true)
 
-User.create!(name: "生徒１",
+User.create!(name: "先生3",
              email: "sample3@email.com",
+             password: "password",
+             password_confirmation: "password",
+             tutor: true,
+             parent: false,
+             admin: true)
+
+User.create!(name: "先生4",
+             email: "sample4@email.com",
+             password: "password",
+             password_confirmation: "password",
+             tutor: true,
+             parent: false,
+             admin: true)
+             
+User.create!(name: "生徒5",
+             email: "sample5@email.com",
+             password: "password",
+             password_confirmation: "password",
+             tutor: false,
+             parent: true,
+             admin: false)
+             
+User.create!(name: "生徒6",
+             email: "sample6@email.com",
+             password: "password",
+             password_confirmation: "password",
+             tutor: false,
+             parent: true,
+             admin: false)
+             
+User.create!(name: "生徒7",
+             email: "sample7@email.com",
              password: "password",
              password_confirmation: "password",
              tutor: false,

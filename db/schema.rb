@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200921032827) do
+ActiveRecord::Schema.define(version: 20201006120834) do
 
   create_table "attendances", force: :cascade do |t|
     t.date "worked_on"
@@ -68,6 +68,30 @@ ActiveRecord::Schema.define(version: 20200921032827) do
     t.integer "lesson_21_parent_id"
     t.integer "lesson_22_parent_id"
     t.integer "lesson_23_parent_id"
+    t.string "tutor_checker_0"
+    t.string "tutor_checker_1"
+    t.string "tutor_checker_2"
+    t.string "tutor_checker_3"
+    t.string "tutor_checker_4"
+    t.string "tutor_checker_5"
+    t.string "tutor_checker_6"
+    t.string "tutor_checker_7"
+    t.string "tutor_checker_8"
+    t.string "tutor_checker_9"
+    t.string "tutor_checker_10"
+    t.string "tutor_checker_11"
+    t.string "tutor_checker_12"
+    t.string "tutor_checker_13"
+    t.string "tutor_checker_14"
+    t.string "tutor_checker_15"
+    t.string "tutor_checker_16"
+    t.string "tutor_checker_17"
+    t.string "tutor_checker_18"
+    t.string "tutor_checker_19"
+    t.string "tutor_checker_20"
+    t.string "tutor_checker_21"
+    t.string "tutor_checker_22"
+    t.string "tutor_checker_23"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
@@ -80,8 +104,8 @@ ActiveRecord::Schema.define(version: 20200921032827) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "department"
-    t.datetime "basic_time", default: "2020-10-03 23:00:00"
-    t.datetime "work_time", default: "2020-10-03 22:30:00"
+    t.datetime "basic_time", default: "2020-10-06 23:00:00"
+    t.datetime "work_time", default: "2020-10-06 22:30:00"
     t.boolean "tutor", default: false
     t.boolean "parent", default: false
     t.index ["email"], name: "index_users_on_email", unique: true

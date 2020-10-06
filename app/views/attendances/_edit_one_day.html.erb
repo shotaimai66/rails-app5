@@ -1,4 +1,5 @@
 <% provide(:class_text, 'basic-info') %>
+<% provide(:tutor_buttom_text_2, '依頼受信中') %>
 
 <div class="modal-dialog modal-lg modal-dialog-center">
   <div class="modal-content">
@@ -58,7 +59,7 @@
                   <td><%= @attendance.worked_on %></td>
                   <%= af.hidden_field :worked_on, :value => @attendance.worked_on %>
                     <td class="<%= css_class %>"><%= $days_of_the_week[@attendance.worked_on.wday] %></td>
-                    <!--もし授業可能時間を設定した日が、本日だったら、現在時刻以前は表示しない-->
+                    <!--もし授業可能時間を設定した日が、本日だったら、現在時刻以前は"-"を表示-->
                     <% if @attendance.worked_on == Date.current %>
                       <td>
                         <% if Time.current.hour > 0 || Time.current.hour == 0 %>
@@ -224,6 +225,8 @@
                       <td>
                         <% if Time.current.hour > 23 || Time.current.hour == 23 %>
                           <%= "-" %>
+                        <% elsif @attendance.lesson_status_23 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
                         <% else %>
                           <%= af.check_box :lesson_status_23 , prompt: "" %>
                         <% end %>

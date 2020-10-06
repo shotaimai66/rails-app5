@@ -98,6 +98,10 @@ module ApplicationHelper
       #   どの値にも一致しない場合に行う処理
     end
 
+    if first_time == nil && last_time == nil
+      return "Full"
+    end
+    
     return "#{first_time}:00〜#{last_time}:59"
   end
   

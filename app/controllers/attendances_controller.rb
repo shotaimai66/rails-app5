@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_user, only: [:edit_one_month, :update_one_month, :check_reservation]
+  before_action :set_user, only: [:edit_one_month, :update_one_month, :check_reservation, :decide_reservation]
   before_action :logged_in_user, only: [:update,:edit_one_month]
   before_action :set_one_month,only: :edit_one_month
   
@@ -242,12 +242,18 @@ class AttendancesController < ApplicationController
 
   # tutorが予約申請の承認・否認を判断したものを保存する
   def decide_reservation
+    attendances_params.each do |id, item|
+      attendance = Attendance.find(id)
+      attendance.update_attributes!(item)
+    end
+    flash[:success] = "1ヶ月分の授業の依頼を更新しました。"
+    redirect_to user_url(@user)
   end
 
   private
   # 1ヶ月分の勤怠情報を扱います
   def attendances_params
-    params.require(:user).permit(attendances: [:attendance_id, :started_at, :finished_at, :note, :worked_on, :user_id, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023])[:attendances]
+    params.require(:user).permit(attendances: [:attendance_id, :started_at, :finished_at, :note, :worked_on, :user_id, :lesson_status_00, :lesson_status_01, :lesson_status_02, :lesson_status_03, :lesson_status_04, :lesson_status_05, :lesson_status_06, :lesson_status_07, :lesson_status_08, :lesson_status_09, :lesson_status_10, :lesson_status_11, :lesson_status_12, :lesson_status_13, :lesson_status_14, :lesson_status_15, :lesson_status_16, :lesson_status_17, :lesson_status_18, :lesson_status_19, :lesson_status_20, :lesson_status_21, :lesson_status_22, :lesson_status_023, :tutor_checker_0, :tutor_checker_1, :tutor_checker_2, :tutor_checker_3, :tutor_checker_4, :tutor_checker_5, :tutor_checker_6, :tutor_checker_7, :tutor_checker_8, :tutor_checker_9, :tutor_checker_10, :tutor_checker_11, :tutor_checker_12, :tutor_checker_13, :tutor_checker_14, :tutor_checker_15, :tutor_checker_16, :tutor_checker_17, :tutor_checker_18, :tutor_checker_19, :tutor_checker_20, :tutor_checker_21, :tutor_checker_22, :tutor_checker_23])[:attendances]
   end
   
   # beforeフィルター
