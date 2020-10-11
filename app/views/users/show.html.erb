@@ -76,7 +76,8 @@
   <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
   
   <%= link_to "予約が入りました。ご確認お願いいたします。", attendances_check_reservation_user_path(@user), remote: true, class: "btn btn-danger" if current_user.tutor? && @reservation_applications.present? %>
-
+ 
+  <% if @user.tutor? %>
   <table class="table table-bordered table-condensed">
     <thead>
       <tr>
@@ -162,7 +163,7 @@
         <% end %>
     </tbody>
   </table>
-  
+  <% end %>
 </div>
 
 <!--Tutorが一日の変更をするモーダルウインドウ表示-->
