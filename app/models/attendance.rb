@@ -2,7 +2,11 @@ class Attendance < ApplicationRecord
   belongs_to :user
 
   attr_accessor :attendance_id      #モデルに基づかない項目をform_withで送信する場合に記載
-  
+  # enum lesson_status_23: {授業の設定なし: 0, 授業の設定有り:1, 申請中:2, 承認:3, 否認: 4}  # 試しに追加
+  # enum lesson_status_22: {授業の設定なし: 0, 授業の設定有り:1, 申請中:2, 承認:3, 否認: 4}  # 試しに追加
+  # enum lesson_status_23: {授業の設定なし: 0, 授業の設定有り:1, 申請中:2, 承認:3, 否認: 4}  # 試しに追加
+
+
   validates :worked_on, presence: true
   validates :note, length: { maximum:50 }
   

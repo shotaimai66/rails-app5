@@ -244,7 +244,167 @@ class AttendancesController < ApplicationController
   def decide_reservation
     attendances_params.each do |id, item|
       attendance = Attendance.find(id)
+        # item.each { |key, value| puts "#{key} => #{value}"} 一行で書く時はこう
+        # item.each do |key, value|
+          # puts "#{key} => #{value}" ここに処理を書く
+          
+          # if key == tutor_checker_23
+            # if value == accept
+              # attendance.lesson_status_023 = 3
+            # elsif value == refuse
+              # attendance.lesson_status_023 = 4
+            # end
+          # end
+          # tutor_checker_14 => refuse
+          # tutor_checker_15 => refuse
+        # end
       attendance.update_attributes!(item)
+
+      if attendance.tutor_checker_0 == "accept"
+        attendance.lesson_status_00 = 3
+      elsif attendance.tutor_checker_0 == "refuse"
+        attendance.lesson_status_00 = 4
+      end
+
+      if attendance.tutor_checker_1 == "accept"
+        attendance.lesson_status_01 = 3
+      elsif attendance.tutor_checker_1 == "refuse"
+        attendance.lesson_status_01 = 4
+      end
+      
+      if attendance.tutor_checker_2 == "accept"
+        attendance.lesson_status_02 = 3
+      elsif attendance.tutor_checker_2 == "refuse"
+        attendance.lesson_status_02 = 4
+      end
+
+      if attendance.tutor_checker_3 == "accept"
+        attendance.lesson_status_03 = 3
+      elsif attendance.tutor_checker_1 == "refuse"
+        attendance.lesson_status_01 = 4
+      end
+
+      if attendance.tutor_checker_4 == "accept"
+        attendance.lesson_status_04 = 3
+      elsif attendance.tutor_checker_4 == "refuse"
+        attendance.lesson_status_04 = 4
+      end
+
+      if attendance.tutor_checker_5 == "accept"
+        attendance.lesson_status_05 = 3
+      elsif attendance.tutor_checker_5 == "refuse"
+        attendance.lesson_status_05 = 4
+      end
+
+      if attendance.tutor_checker_6 == "accept"
+        attendance.lesson_status_06 = 3
+      elsif attendance.tutor_checker_6 == "refuse"
+        attendance.lesson_status_06 = 4
+      end
+
+      if attendance.tutor_checker_7 == "accept"
+        attendance.lesson_status_07 = 3
+      elsif attendance.tutor_checker_7 == "refuse"
+        attendance.lesson_status_07 = 4
+      end
+
+      if attendance.tutor_checker_8 == "accept"
+        attendance.lesson_status_08 = 3
+      elsif attendance.tutor_checker_8 == "refuse"
+        attendance.lesson_status_08 = 4
+      end
+
+      if attendance.tutor_checker_9 == "accept"
+        attendance.lesson_status_09 = 3
+      elsif attendance.tutor_checker_9 == "refuse"
+        attendance.lesson_status_09 = 4
+      end
+
+      if attendance.tutor_checker_10 == "accept"
+        attendance.lesson_status_10 = 3
+      elsif attendance.tutor_checker_10 == "refuse"
+        attendance.lesson_status_10 = 4
+      end
+
+      if attendance.tutor_checker_11 == "accept"
+        attendance.lesson_status_11 = 3
+      elsif attendance.tutor_checker_11 == "refuse"
+        attendance.lesson_status_11 = 4
+      end
+      
+      if attendance.tutor_checker_12 == "accept"
+        attendance.lesson_status_12 = 3
+      elsif attendance.tutor_checker_12 == "refuse"
+        attendance.lesson_status_12 = 4
+      end
+
+      if attendance.tutor_checker_13 == "accept"
+        attendance.lesson_status_13 = 3
+      elsif attendance.tutor_checker_13 == "refuse"
+        attendance.lesson_status_13 = 4
+      end
+
+      if attendance.tutor_checker_14 == "accept"
+        attendance.lesson_status_14 = 3
+      elsif attendance.tutor_checker_14 == "refuse"
+        attendance.lesson_status_14 = 4
+      end
+
+      if attendance.tutor_checker_15 == "accept"
+        attendance.lesson_status_15 = 3
+      elsif attendance.tutor_checker_15 == "refuse"
+        attendance.lesson_status_15 = 4
+      end
+
+      if attendance.tutor_checker_16 == "accept"
+        attendance.lesson_status_16 = 3
+      elsif attendance.tutor_checker_16 == "refuse"
+        attendance.lesson_status_16 = 4
+      end
+
+      if attendance.tutor_checker_17 == "accept"
+        attendance.lesson_status_17 = 3
+      elsif attendance.tutor_checker_17 == "refuse"
+        attendance.lesson_status_17 = 4
+      end
+
+      if attendance.tutor_checker_18 == "accept"
+        attendance.lesson_status_18 = 3
+      elsif attendance.tutor_checker_18 == "refuse"
+        attendance.lesson_status_18 = 4
+      end
+
+      if attendance.tutor_checker_19 == "accept"
+        attendance.lesson_status_19 = 3
+      elsif attendance.tutor_checker_19 == "refuse"
+        attendance.lesson_status_19 = 4
+      end
+
+      if attendance.tutor_checker_20 == "accept"
+        attendance.lesson_status_20 = 3
+      elsif attendance.tutor_checker_20 == "refuse"
+        attendance.lesson_status_20 = 4
+      end
+
+      if attendance.tutor_checker_21 == "accept"
+        attendance.lesson_status_21 = 3
+      elsif attendance.tutor_checker_21 == "refuse"
+        attendance.lesson_status_21 = 4
+      end
+
+      if attendance.tutor_checker_22 == "accept"
+        attendance.lesson_status_22 = 3
+      elsif attendance.tutor_checker_22 == "refuse"
+        attendance.lesson_status_22 = 4
+      end
+
+      if attendance.tutor_checker_23 == "accept"
+        attendance.lesson_status_23 = 3
+      elsif attendance.tutor_checker_23 == "refuse"
+        attendance.lesson_status_23 = 4
+      end
+
+      attendance.save
     end
     flash[:success] = "1ヶ月分の授業の依頼を更新しました。"
     redirect_to user_url(@user)

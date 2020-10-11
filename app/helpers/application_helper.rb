@@ -98,7 +98,9 @@ module ApplicationHelper
       #   どの値にも一致しない場合に行う処理
     end
 
-    if first_time == nil && last_time == nil
+    if first_time == nil && last_time == nil && current_user.tutor?
+      return "現在予約可能な授業設定なし"
+    elsif first_time == nil && last_time == nil
       return "Full"
     end
     

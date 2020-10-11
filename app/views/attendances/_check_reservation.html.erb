@@ -1,3 +1,7 @@
+/Attendance-Tutorial/app/views/attendances/_check_reservation.html.erbをform_withで書いたバージョン
+
+
+
 <% provide(:class_text, 'basic-info') %>
 
 <div class="modal-dialog modal-lg modal-dialog-center">
@@ -286,13 +290,13 @@
                     <% if rsv.lesson_status_21 == 2 %>
                       <%= attendance.radio_button :tutor_checker_21, :accept, checked: true %>
                       <%= attendance.label :tutor_checker_21, "引受ける", {value: :accept, style: "display: inline-block;"} %>
-                      <%= attendance.radio_button :tutor_checker_0, :refuse %>
+                      <%= attendance.radio_button :tutor_checker_21, :refuse %>
                       <%= attendance.label :tutor_checker_21, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
                     <% end %>
                   </td>
                   <td>
                     <% if rsv.lesson_status_22 == 2 %>
-                      <%= attendance.radio_button :tutor_checker_22, :accept, checked: true %>
+                      <%= attendance.radio_button :tutor_checker_22, :accept %>
                       <%= attendance.label :tutor_checker_22, "引受ける", {value: :accept, style: "display: inline-block;"} %>
                       <%= attendance.radio_button :tutor_checker_22, :refuse %>
                       <%= attendance.label :tutor_checker_22, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
@@ -300,13 +304,13 @@
                   </td>
                   <td>
                     <% if rsv.lesson_status_23 == 2 %>
-                      <%= attendance.radio_button :tutor_checker_23, :accept, checked: true %>
+                      <%= attendance.radio_button :tutor_checker_23, :accept %>
                       <%= attendance.label :tutor_checker_23, "引受ける", {value: :accept, style: "display: inline-block;"} %>
                       <%= attendance.radio_button :tutor_checker_23, :refuse %>
                       <%= attendance.label :tutor_checker_23, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
                     <% end %>
                   </td>
-                </tr>
+                  </tr>
                 <% end %><!--f.fields_for "attendances[]", rsv do |attendance| のend-->
               <% end %><!--@reservation_applications.each do |rsv| のend-->
             </tbody>
