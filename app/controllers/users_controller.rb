@@ -13,6 +13,9 @@ class UsersController < ApplicationController
   def show
     # 授業の予約申請を取得し@reservation_applicationsに入れる
     @reservation_applications = @user.attendances.where(lesson_status_00: 2).or(@user.attendances.where(lesson_status_01: 2)).or(@user.attendances.where(lesson_status_02: 2)).or(@user.attendances.where(lesson_status_03: 2)).or(@user.attendances.where(lesson_status_04: 2)).or(@user.attendances.where(lesson_status_05: 2)).or(@user.attendances.where(lesson_status_06: 2)).or(@user.attendances.where(lesson_status_07: 2)).or(@user.attendances.where(lesson_status_08: 2)).or(@user.attendances.where(lesson_status_09: 2)).or(@user.attendances.where(lesson_status_10: 2)).or(@user.attendances.where(lesson_status_11: 2)).or(@user.attendances.where(lesson_status_12: 2)).or(@user.attendances.where(lesson_status_13: 2)).or(@user.attendances.where(lesson_status_14: 2)).or(@user.attendances.where(lesson_status_15: 2)).or(@user.attendances.where(lesson_status_16: 2)).or(@user.attendances.where(lesson_status_17: 2)).or(@user.attendances.where(lesson_status_18: 2)).or(@user.attendances.where(lesson_status_19: 2)).or(@user.attendances.where(lesson_status_20: 2)).or(@user.attendances.where(lesson_status_21: 2)).or(@user.attendances.where(lesson_status_22: 2)).or(@user.attendances.where(lesson_status_23: 2))
+    # current_userがparentだったらparentが予約申請した日のattendanceを@parent_rsv_attendancesに入れ、ステータスを確認できるようにする。
+    # nilの時はnilが入る
+    @parent_rsv_attendances = current_user.parent? ? Attendance.where(lesson_00_parent_id: current_user.id).where(lesson_01_parent_id: current_user.id).where(lesson_02_parent_id: current_user.id).where(lesson_03_parent_id: current_user.id).where(lesson_04_parent_id: current_user.id).where(lesson_05_parent_id: current_user.id).where(lesson_06_parent_id: current_user.id).where(lesson_07_parent_id: current_user.id).where(lesson_08_parent_id: current_user.id).where(lesson_09_parent_id: current_user.id).where(lesson_10_parent_id: current_user.id).where(lesson_11_parent_id: current_user.id).where(lesson_12_parent_id: current_user.id).where(lesson_13_parent_id: current_user.id).where(lesson_14_parent_id: current_user.id).where(lesson_15_parent_id: current_user.id).where(lesson_16_parent_id: current_user.id).where(lesson_17_parent_id: current_user.id).where(lesson_18_parent_id: current_user.id).where(lesson_19_parent_id: current_user.id).where(lesson_20_parent_id: current_user.id).where(lesson_21_parent_id: current_user.id).where(lesson_22_parent_id: current_user.id).where(lesson_23_parent_id: current_user.id).order(worked_on: "DESC") : nil
   end
   
   def new
@@ -69,5 +72,4 @@ class UsersController < ApplicationController
     def basic_info_params
       params.require(:user).permit(:department, :basic_time, :work_time)
     end
-    
 end
