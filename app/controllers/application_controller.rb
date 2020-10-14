@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   $days_of_the_week = %w{日 月 火 水 木 金 土}
+  $lesson_status = %w{未 授業可能時間登録済み 予約申し込み中 承認 否認}
 
 
 
