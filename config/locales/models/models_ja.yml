@@ -20,3 +20,27 @@ ja:
           finished_at: 退勤時間
           note: 備考
           user: ユーザーID
+          lesson_status_00: 0
+          lesson_status_01: 1
+          lesson_status_02: 2
+          lesson_status_03: 3
+          lesson_status_04: 4
+          lesson_status_05: 5
+          lesson_status_06: 6
+          lesson_status_07: 7
+          lesson_status_08: 8
+          lesson_status_09: 9
+          lesson_status_10: 10
+          lesson_status_11: 11
+          lesson_status_12: 12
+          lesson_status_13: 13
+          lesson_status_14: 14
+          lesson_status_15: 15
+          lesson_status_16: 16
+          lesson_status_17: 17
+          lesson_status_18: 18
+          lesson_status_19: 19
+          lesson_status_20: 20
+          lesson_status_21: 21
+          lesson_status_22: 22
+          lesson_status_23: 23
