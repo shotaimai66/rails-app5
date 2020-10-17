@@ -10,7 +10,7 @@
 </div>
 
   <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
-
+  <!--もしcurrent_userがtutorかつreservation_applicationsが存在すればボタン表示-->
   <%= link_to "予約が入りました。ご確認お願いいたします。", attendances_check_reservation_user_path(@user), remote: true, class: "btn btn-danger" if current_user.tutor? && @reservation_applications.present? %>
 
  <!--＠userがTutorの時のみ、カレンダーを表示-->
@@ -97,222 +97,231 @@
 </div>
 
 <!--parentが予約ステータスを確認する部分-->
-<div>
-  <% if @parent_rsv_attendances.nil? %>
-    <p>現在予約したレッスンはありません</p>
-  <% elsif  @parent_rsv_attendances.present? %>
+
+  <div>
+    <% if @parent_rsv_attendances.nil? %>
+      <p>現在予約したレッスンはありません</p>
+    <% elsif  @parent_rsv_attendances.present? %>
+    
+      <h1><%= current_user.name %>さんの家庭教師レッスン予約状況</h1>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>時間</th>
+            <th>家庭教師</th>
+            <th>予約状況</th>
+            <th></th>
+          </tr>
+        </thead>
   
-    <h1><%= current_user.name %>さんの家庭教師レッスン予約状況</h1>
-    <table class="table table-bordered table-condensed">
-      <thead>
-        <tr>
-          <th>日付</th>
-          <th>時間</th>
-          <th>家庭教師</th>
-          <th>予約状況</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @parent_rsv_attendances.each do |pra| %>
-          <% if pra.lesson_status_00 == 2 ||  pra.lesson_status_00 == 3 || pra.lesson_status_00 == 4 || pra.lesson_status_00 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_00) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_00] %></td>
-            </tr>
+        <tbody>
+          <% @parent_rsv_attendances.each do |pra| %>
+            
+            <% if pra.lesson_status_00 == 2 ||  pra.lesson_status_00 == 3 || pra.lesson_status_00 == 4 || pra.lesson_status_00 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_00) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_00] %></td>
+                <td>
+                  <!--もし　レッスン完了時間から(0時予約の場合は１時をさす)1分経過していたら、完了ボタンを表示する-->
+                  <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) %>
+                    <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_status_00: 6), method: :patch, class: "btn btn-danger" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_01 == 2 ||  pra.lesson_status_01 == 3 || pra.lesson_status_01 == 4 || pra.lesson_status_01 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_01) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_01] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_02 == 2 ||  pra.lesson_status_02 == 3 || pra.lesson_status_02 == 4 || pra.lesson_status_02 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_02) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_02] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_03 == 2 ||  pra.lesson_status_03 == 3 || pra.lesson_status_03 == 4 || pra.lesson_status_03 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_03) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_03] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_04 == 2 ||  pra.lesson_status_04 == 3 || pra.lesson_status_04 == 4 || pra.lesson_status_04 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_04) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_04] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_05 == 2 ||  pra.lesson_status_05 == 3 || pra.lesson_status_05 == 4 || pra.lesson_status_05 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_05) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_05] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_06 == 2 ||  pra.lesson_status_06 == 3 || pra.lesson_status_06 == 4 || pra.lesson_status_06 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_06) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_06] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_07 == 2 ||  pra.lesson_status_07 == 3 || pra.lesson_status_07 == 4 || pra.lesson_status_07 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_07) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_07] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_08 == 2 ||  pra.lesson_status_08 == 3 || pra.lesson_status_08 == 4 || pra.lesson_status_08 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_08) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_08] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_09 == 2 ||  pra.lesson_status_09 == 3 || pra.lesson_status_09 == 4 || pra.lesson_status_09 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_09) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_09] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_10 == 2 ||  pra.lesson_status_10 == 3 || pra.lesson_status_10 == 4 || pra.lesson_status_10 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_10) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_10] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_11 == 2 ||  pra.lesson_status_11 == 3 || pra.lesson_status_11 == 4 || pra.lesson_status_11 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_11) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_11] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_12 == 2 ||  pra.lesson_status_12 == 3 || pra.lesson_status_12 == 4 || pra.lesson_status_12 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_12) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_12] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_13 == 2 ||  pra.lesson_status_13 == 3 || pra.lesson_status_13 == 4 || pra.lesson_status_13 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_13) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_13] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_14 == 2 ||  pra.lesson_status_14 == 3 || pra.lesson_status_14 == 4 || pra.lesson_status_14 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_14) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_14] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_15 == 2 ||  pra.lesson_status_15 == 3 || pra.lesson_status_15 == 4 || pra.lesson_status_15 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_15) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_15] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_16 == 2 ||  pra.lesson_status_16 == 3 || pra.lesson_status_16 == 4 || pra.lesson_status_16 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_16) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_16] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_17 == 2 ||  pra.lesson_status_17 == 3 || pra.lesson_status_17 == 4 || pra.lesson_status_17 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_17) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_17] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_18 == 2 ||  pra.lesson_status_18 == 3 || pra.lesson_status_18 == 4 || pra.lesson_status_18 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_18) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_18] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_19 == 2 ||  pra.lesson_status_19 == 3 || pra.lesson_status_19 == 4 || pra.lesson_status_19 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_19) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_19] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_20 == 2 ||  pra.lesson_status_20 == 3 || pra.lesson_status_20 == 4 || pra.lesson_status_20 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_20) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_20] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_21 == 2 ||  pra.lesson_status_21 == 3 || pra.lesson_status_21 == 4 || pra.lesson_status_21 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_21) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_21] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_22 == 2 ||  pra.lesson_status_22 == 3 || pra.lesson_status_22 == 4 || pra.lesson_status_22 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_22) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_22] %></td>
+              </tr>
+            <% end %>
+            <% if pra.lesson_status_23 == 2 ||  pra.lesson_status_23 == 3 || pra.lesson_status_23 == 4 || pra.lesson_status_23 == 5 %>
+              <tr>
+                <td><%= pra.worked_on %></td>
+                <td><%= Attendance.human_attribute_name(:lesson_status_23) %>時</td>
+                <td><%= User.find(pra.user_id).name %></td>
+                <td><%= $lesson_status[pra.lesson_status_23] %></td>
+              </tr>
+            <% end %>
+  
           <% end %>
-          <% if pra.lesson_status_01 == 2 ||  pra.lesson_status_01 == 3 || pra.lesson_status_01 == 4 || pra.lesson_status_01 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_01) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_01] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_02 == 2 ||  pra.lesson_status_02 == 3 || pra.lesson_status_02 == 4 || pra.lesson_status_02 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_02) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_02] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_03 == 2 ||  pra.lesson_status_03 == 3 || pra.lesson_status_03 == 4 || pra.lesson_status_03 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_03) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_03] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_04 == 2 ||  pra.lesson_status_04 == 3 || pra.lesson_status_04 == 4 || pra.lesson_status_04 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_04) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_04] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_05 == 2 ||  pra.lesson_status_05 == 3 || pra.lesson_status_05 == 4 || pra.lesson_status_05 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_05) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_05] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_06 == 2 ||  pra.lesson_status_06 == 3 || pra.lesson_status_06 == 4 || pra.lesson_status_06 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_06) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_06] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_07 == 2 ||  pra.lesson_status_07 == 3 || pra.lesson_status_07 == 4 || pra.lesson_status_07 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_07) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_07] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_08 == 2 ||  pra.lesson_status_08 == 3 || pra.lesson_status_08 == 4 || pra.lesson_status_08 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_08) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_08] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_09 == 2 ||  pra.lesson_status_09 == 3 || pra.lesson_status_09 == 4 || pra.lesson_status_09 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_09) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_09] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_10 == 2 ||  pra.lesson_status_10 == 3 || pra.lesson_status_10 == 4 || pra.lesson_status_10 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_10) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_10] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_11 == 2 ||  pra.lesson_status_11 == 3 || pra.lesson_status_11 == 4 || pra.lesson_status_11 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_11) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_11] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_12 == 2 ||  pra.lesson_status_12 == 3 || pra.lesson_status_12 == 4 || pra.lesson_status_12 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_12) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_12] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_13 == 2 ||  pra.lesson_status_13 == 3 || pra.lesson_status_13 == 4 || pra.lesson_status_13 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_13) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_13] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_14 == 2 ||  pra.lesson_status_14 == 3 || pra.lesson_status_14 == 4 || pra.lesson_status_14 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_14) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_14] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_15 == 2 ||  pra.lesson_status_15 == 3 || pra.lesson_status_15 == 4 || pra.lesson_status_15 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_15) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_15] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_16 == 2 ||  pra.lesson_status_16 == 3 || pra.lesson_status_16 == 4 || pra.lesson_status_16 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_16) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_16] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_17 == 2 ||  pra.lesson_status_17 == 3 || pra.lesson_status_17 == 4 || pra.lesson_status_17 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_17) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_17] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_18 == 2 ||  pra.lesson_status_18 == 3 || pra.lesson_status_18 == 4 || pra.lesson_status_18 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_18) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_18] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_19 == 2 ||  pra.lesson_status_19 == 3 || pra.lesson_status_19 == 4 || pra.lesson_status_19 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_19) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_19] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_20 == 2 ||  pra.lesson_status_20 == 3 || pra.lesson_status_20 == 4 || pra.lesson_status_20 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_20) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_20] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_21 == 2 ||  pra.lesson_status_21 == 3 || pra.lesson_status_21 == 4 || pra.lesson_status_21 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_21) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_21] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_22 == 2 ||  pra.lesson_status_22 == 3 || pra.lesson_status_22 == 4 || pra.lesson_status_22 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_22) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_22] %></td>
-            </tr>
-          <% end %>
-          <% if pra.lesson_status_23 == 2 ||  pra.lesson_status_23 == 3 || pra.lesson_status_23 == 4 || pra.lesson_status_23 == 5 %>
-            <tr>
-              <td><%= pra.worked_on %></td>
-              <td><%= Attendance.human_attribute_name(:lesson_status_23) %>時</td>
-              <td><%= User.find(pra.user_id).name %></td>
-              <td><%= $lesson_status[pra.lesson_status_23] %></td>
-            </tr>
-          <% end %>
-
-        <% end %>
-      </tbody>
-    </table>  
-  <% end %>
-</div>  
+        </tbody>
+      </table>  
+    <% end %>
+  </div>  
 
 
 <!--Tutorが一日の変更をするモーダルウインドウ表示-->

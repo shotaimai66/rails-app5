@@ -296,7 +296,7 @@
                   </td>
                   <td>
                     <% if rsv.lesson_status_22 == 2 %>
-                      <%= attendance.radio_button :tutor_checker_22, :accept %>
+                      <%= attendance.radio_button :tutor_checker_22, :accept, checked: true %>
                       <%= attendance.label :tutor_checker_22, "引受ける", {value: :accept, style: "display: inline-block;"} %>
                       <%= attendance.radio_button :tutor_checker_22, :refuse %>
                       <%= attendance.label :tutor_checker_22, "辞退する", {value: :refuse, style: "display: inline-block;"} %>
@@ -304,7 +304,7 @@
                   </td>
                   <td>
                     <% if rsv.lesson_status_23 == 2 %>
-                      <%= attendance.radio_button :tutor_checker_23, :accept %>
+                      <%= attendance.radio_button :tutor_checker_23, :accept, checked: true %>
                       <%= attendance.label :tutor_checker_23, "引受ける", {value: :accept, style: "display: inline-block;"} %>
                       <%= attendance.radio_button :tutor_checker_23, :refuse %>
                       <%= attendance.label :tutor_checker_23, "辞退する", {value: :refuse, style: "display: inline-block;"} %>

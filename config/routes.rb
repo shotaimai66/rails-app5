@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       # toturが予約申請を承認・否認する編集モーダルを表示するルーティング
       get 'attendances/check_reservation'         # /users/:id/attendances/check_reservation(.:format)   attendances_check_reservation_user_path
       patch 'attendances/decide_reservation'      # /users/:id/attendances/decide_reservation(.:format)  attendances_decide_reservation_user_path
+      # parentが予約申請の結果を見たあと、確認ボタンを押し、更新するルーティング
+      patch 'attendances/parent_checked'      # /users/:id/attendances/parent_checked(.:format)  attendances_parent_checked_user_path
     end
     resources :attendances, only: :update
   end
