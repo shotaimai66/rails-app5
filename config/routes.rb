@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tutors/index'
+
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   # 家庭教師一覧
-  get '/tutors', to: 'tutors#index'   # /tutors  tutors#index 
+  # get '/tutors', to: 'tutors#index'   # /tutors  tutors#index 
 
 
   resources :users do
