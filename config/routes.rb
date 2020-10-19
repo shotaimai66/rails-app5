@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'tutors/index'
 
   root 'static_pages#top'
   get '/signup', to: 'users#new'
+
+ # 家庭教師一覧
+  get '/tutors', to: 'tutors#index'   # /tutors  tutors#index 
 
   # LINE Messaging API機能
   post '/callback' => 'linebot#callback'
@@ -12,9 +14,7 @@ Rails.application.routes.draw do
   post  '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # 家庭教師一覧
-  # get '/tutors', to: 'tutors#index'   # /tutors  tutors#index 
-
+ 
 
   resources :users do
     member do
