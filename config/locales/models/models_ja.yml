@@ -14,6 +14,8 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+          favorite_subject: 得意科目
+          self_introduction: 自己紹介
         attendance:
           worked_on: 日付
           started_at: 出勤時間

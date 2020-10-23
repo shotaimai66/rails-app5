@@ -2,44 +2,28 @@
 
 <h1>家庭教師一覧</h1>
 
-<div class="col-md-10 col-md-offset-1">
-  <%= will_paginate %>
-  <table class="table table-condensed table-hover" id="table-users">
-    <thead>
-      <tr>
-        <th><%= User.human_attribute_name :name %></th>
-        <th class="center"><%= User.human_attribute_name :department %></th>
-        <% if current_user.admin? %>
-          <th class="center"><%= User.human_attribute_name :basic_time %></th>
-          <th class="center"><%= User.human_attribute_name :work_time %></th>
-        <% end %>
-        <th></th>
-      </tr>
-    </thead>
+<%= will_paginate %>
 
-    <% @tutors.each do |user| %>
-      <tr>
-        <td>
-          <%= link_to user.name, user %>
-        </td>
-        <td class="center"><%= user.department.present? ? user.department : "未所属" %></td>
-        <% if current_user.admin? %>
-          <td class="center"><%= format_basic_info(user.basic_time) %></td>
-          <td class="center"><%= format_basic_info(user.work_time) %></td>
-        <% end %>
-        <td class="center">
-          <% if current_user.admin? && !current_user?(user) %>
-            <%= link_to "基本情報編集", edit_basic_info_user_path(user), remote: true, class: "btn btn-success" %>
-            <%= link_to "削除", user, method: :delete,
-              data: { confirm: "削除してよろしいですか？" },
-              class: "btn btn-danger" %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-  <%= will_paginate %>
+<!--ここから新しい家庭教師一覧-->
+<div class="row sampleRow">
+  <% @tutors.each do |user| %>
+  	<div class="col-xs-12 col-sm-6">
+  	 <div class="panel panel-danger">
+      	<div class="panel-heading">
+  	      <%= link_to user.name, user %>
+      	</div>
+      	<div class="panel-body">
+      	  <!--得意科目-->
+      	  <P><%= user.favorite_subject %></P>
+      	  <!--プロフイール-->
+      	  <P><%= user.self_introduction %></P>
+      	</div>
+      </div>
+  	</div>
+  <% end %>
 </div>
+<!--ここまで新しい家庭教師一覧-->
+  <%= will_paginate %>
 
 <!--モーダルウィンドウ表示-->
 <div id="edit-basic-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:index,:destroy, :edit_basic_info, :update_basic_info]
+  before_action :tutor_or_parent, only: :show
   before_action :set_one_month, only: :show
 
 
@@ -18,8 +19,10 @@ class UsersController < ApplicationController
 
 
     # current_userがparentだったらparentが予約申請した日のattendanceを@parent_rsv_attendancesに入れ、ステータスを確認できるようにする。
-    # parentの予約したattendancesが入っている
+    # lesson_00_parent_idにparentのidが入っていて、
+    # レッスンのステータスが　２（予約申請をした）か３（予約申請がokだった）なら@parent_rsv_attendancesにattendanceのインスタンスたちを入れる
     # nilの時はnilが入る
+    # @parent_rsv_attendances = current_user.parent? || current_user == @user ? Attendance.where("(lesson_00_parent_id = ?) OR (lesson_01_parent_id = ?) OR (lesson_02_parent_id = ?) OR (lesson_03_parent_id = ?) OR (lesson_04_parent_id = ?) OR (lesson_05_parent_id = ?) OR (lesson_06_parent_id = ?) OR (lesson_07_parent_id = ?) OR (lesson_08_parent_id = ?) OR (lesson_09_parent_id = ?) OR (lesson_10_parent_id = ?) OR (lesson_11_parent_id = ?) OR (lesson_12_parent_id = ?) OR (lesson_13_parent_id = ?) OR (lesson_14_parent_id = ?) OR (lesson_15_parent_id = ?) OR (lesson_16_parent_id = ?) OR (lesson_17_parent_id = ?) OR (lesson_18_parent_id = ?) OR (lesson_19_parent_id = ?) OR (lesson_20_parent_id = ?) OR (lesson_21_parent_id = ?) OR (lesson_22_parent_id = ?) OR (lesson_23_parent_id = ?)", @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id).order(worked_on: "DESC") : nil
     @parent_rsv_attendances = current_user.parent? || current_user == @user ? Attendance.where("(lesson_00_parent_id = ?) OR (lesson_01_parent_id = ?) OR (lesson_02_parent_id = ?) OR (lesson_03_parent_id = ?) OR (lesson_04_parent_id = ?) OR (lesson_05_parent_id = ?) OR (lesson_06_parent_id = ?) OR (lesson_07_parent_id = ?) OR (lesson_08_parent_id = ?) OR (lesson_09_parent_id = ?) OR (lesson_10_parent_id = ?) OR (lesson_11_parent_id = ?) OR (lesson_12_parent_id = ?) OR (lesson_13_parent_id = ?) OR (lesson_14_parent_id = ?) OR (lesson_15_parent_id = ?) OR (lesson_16_parent_id = ?) OR (lesson_17_parent_id = ?) OR (lesson_18_parent_id = ?) OR (lesson_19_parent_id = ?) OR (lesson_20_parent_id = ?) OR (lesson_21_parent_id = ?) OR (lesson_22_parent_id = ?) OR (lesson_23_parent_id = ?)", @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id).order(worked_on: "DESC") : nil
   end
   
@@ -71,7 +74,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :department, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :department, :password, :password_confirmation, :favorite_subject, :self_introduction)
     end
      
     def basic_info_params

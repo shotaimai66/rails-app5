@@ -30,8 +30,16 @@ class ApplicationController < ActionController::Base
   def admin_user
     redirect_to root_url unless current_user.admin?
   end
+  
+   # tutorかどうか判定します。
+  def tutor_user
+    redirect_to root_url unless current_user.tutor?
+  end
 
-
+   # tutorまたはparentかどうか判定します。
+  def tutor_or_parent
+    redirect_to root_url unless current_user.tutor? || current_user.parent?
+  end
 
   # ページ出力前に1ヶ月分のデータの存在を確認・セットします。
   def set_one_month 

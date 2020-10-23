@@ -22,7 +22,7 @@ User.create!(name: "先生2",
              password_confirmation: "password",
              tutor: true,
              parent: false,
-             admin: true)
+             admin: false)
 
 User.create!(name: "先生3",
              email: "sample3@email.com",
@@ -30,7 +30,7 @@ User.create!(name: "先生3",
              password_confirmation: "password",
              tutor: true,
              parent: false,
-             admin: true)
+             admin: false)
 
 User.create!(name: "先生4",
              email: "sample4@email.com",
@@ -38,7 +38,7 @@ User.create!(name: "先生4",
              password_confirmation: "password",
              tutor: true,
              parent: false,
-             admin: true)
+             admin: false)
              
 User.create!(name: "生徒5",
              email: "sample5@email.com",
@@ -63,4 +63,19 @@ User.create!(name: "生徒7",
              tutor: false,
              parent: true,
              admin: false)
+
+60.times do |n|
+  name = Faker::Name.name
+  email ="sample-#{n+1}@email.com"
+  password = "password"
+  User.create(name: name,
+              email: email,
+              password: password,
+              password_confirmation: password,
+             tutor: true,
+             parent: false,
+             admin: false,
+             favorite_subject: "英語",
+             self_introduction: "こんにちは。○×大学の学生です。英語が好きで、留学経験１年です。")
+end
 
