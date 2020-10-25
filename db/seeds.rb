@@ -64,10 +64,22 @@ User.create!(name: "生徒7",
              parent: true,
              admin: false)
 
+intoduction_texts = [
+  'こんにちは。○×大学の学生です。アルバイトで塾講師をやっていたので教えることが得意です。よろしくお願いします。',
+  'こんにちは。子供が好きで教師を目指して学校で勉強しています。よろしくお願いします。',
+  'こんにちは。学問の楽しさを伝えられるよう工夫して教えています。よろしくお願いします。',
+  'こんにちは。今まで１００人以上の子供たちに教えてきました。わかった時の子供たちの笑顔が好きです。よろしくお願いします。',
+  'こんにちは。難しいことをわかりやすく伝えることが得意です。よろしくお願いします。'
+] 
+
+i = 0
+
 60.times do |n|
   name = Faker::Name.name
   email ="sample-#{n+1}@email.com"
   password = "password"
+
+
   User.create(name: name,
               email: email,
               password: password,
@@ -76,6 +88,9 @@ User.create!(name: "生徒7",
              parent: false,
              admin: false,
              favorite_subject: "英語",
-             self_introduction: "こんにちは。○×大学の学生です。英語が好きで、留学経験１年です。")
+             self_introduction: intoduction_texts[i])
+  i = i + 1
+  if i > 4
+    i = 0
+  end
 end
-

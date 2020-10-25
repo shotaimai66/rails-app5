@@ -13,9 +13,17 @@
   	      <%= link_to user.name, user %>
       	</div>
       	<div class="panel-body">
+      	  <div class="center">
+        	  <% if user.image.nil? %>
+        	    <%= image_tag "/user_images/default.png" %>
+        	  <% else %>
+        	    <%= image_tag "/user_images/#{user.image}"%>
+        	 <% end %>
+        	  </div>
       	  <!--得意科目-->
-      	  <P><%= user.favorite_subject %></P>
+      	  <P>得意科目：<%= user.favorite_subject %></P>
       	  <!--プロフイール-->
+      	  <p>プロフィール：</p>
       	  <P><%= user.self_introduction %></P>
       	</div>
       </div>
