@@ -12,8 +12,10 @@
     <%= f.label :favorite_subject, class: "label-#{yield(:class_text)}" %>
     <%= f.text_field :favorite_subject, class: "form-control" %>
   <% end %>
-  <%= f.label :self_introduction, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :self_introduction, class: "form-control" %>
+  <% if !current_user.admin? %>
+    <%= f.label :self_introduction, class: "label-#{yield(:class_text)}" %>
+    <%= f.text_field :self_introduction, class: "form-control" %>
+  <% end %>
 
   <%= f.label :password, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password, class: "form-control" %>
