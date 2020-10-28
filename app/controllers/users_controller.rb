@@ -45,9 +45,21 @@ class UsersController < ApplicationController
   
   def edit
   end
-  
+
+#   :password_confirmation, :favorite_subject, :self_introduction, :image
   def update
-    if @user.update_attributes(user_params)
+    # if @user.update_attributes(user_params)
+    @user.name = params[:user][:name]
+    @user.department = params[:user][:department]
+    @user.favorite_subject = params[:user][:favorite_subject]
+    @user.email = params[:user][:email]
+    @user.self_introduction = params[:user][:self_introduction]
+    @user.password = params[:user][:password]
+    if params[:user][:image]
+      @user.image = "user_#{@user.id}.png"
+      File.binwrite("public/user_images/#{@user.image}", params[:user][:image].read)
+    end  
+    if @user.save
       flash[:success] = "ユーザー情報を更新しました"
       redirect_to @user
     else
@@ -76,7 +88,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :department, :password, :password_confirmation, :favorite_subject, :self_introduction)
+      params.require(:user).permit(:name, :email, :department, :password, :password_confirmation, :favorite_subject, :self_introduction, :image)
     end
      
     def basic_info_params
