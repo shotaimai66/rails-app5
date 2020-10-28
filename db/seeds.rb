@@ -64,7 +64,7 @@ User.create!(name: "生徒7",
              parent: true,
              admin: false)
 
-intoduction_texts = [
+intoduction_tutor = [
   'こんにちは。○×大学の学生です。アルバイトで塾講師をやっていたので教えることが得意です。よろしくお願いします。',
   'こんにちは。子供が好きで教師を目指して学校で勉強しています。よろしくお願いします。',
   'こんにちは。学問の楽しさを伝えられるよう工夫して教えています。よろしくお願いします。',
@@ -74,7 +74,7 @@ intoduction_texts = [
 
 i = 0
 
-60.times do |n|
+30.times do |n|
   name = Faker::Name.name
   email ="sample-#{n+1}@email.com"
   password = "password"
@@ -88,7 +88,37 @@ i = 0
              parent: false,
              admin: false,
              favorite_subject: "英語",
-             self_introduction: intoduction_texts[i])
+             self_introduction: intoduction_tutor[i])
+  i = i + 1
+  if i > 4
+    i = 0
+  end
+end
+
+intoduction_parent = [
+  'こんにちは。小学５年生と小学３年生の親です。いつも〇〇先生にお世話になっています。子供達も先生が大好きで楽しそうに勉強しています。',
+  'こんにちは。中学生の息子に英語を教えてくれる先生を探しています。よろしくお願いします。',
+  'こんにちは。大学受験を控えた娘にお勉強を教えてくれる先生を探しています。受験勉強のコツを教えていただきたいです。よろしくお願いします。',
+  'こんにちは。子供に楽しくお勉強を教えてくれる先生を探しています。小学６年生の息子で、主に宿題をみていただきたいです。よろしくお願いいたします。',
+  'こんにちは。高校２年生と中学生３年生の子供達に勉強を教えて欲しいです。親が教えようとしても難しくてわかりません。よろしくお願いいたします。'
+] 
+
+i = 0
+
+30.times do |n|
+  name = Faker::Name.name
+  email ="sample-#{n+1}@email.com"
+  password = "password"
+
+
+  User.create(name: name,
+              email: email,
+              password: password,
+              password_confirmation: password,
+             tutor: false,
+             parent: true,
+             admin: false,
+             self_introduction: intoduction_parent[i])
   i = i + 1
   if i > 4
     i = 0
