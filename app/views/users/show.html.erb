@@ -16,16 +16,16 @@
  <!--＠userがTutorの時のみ、カレンダーを表示-->
 <div>
   <% if @user.tutor? %>
-    <table class="table table-bordered table-condensed">
+    <table class="table table-bordered table-condensed center">
       <thead>
         <tr>
-          <th>日</th>
-          <th>月</th>
-          <th>火</th>
-          <th>水</th>
-          <th>木</th>
-          <th>金</th>
-          <th>土</th>
+          <th class = "center text-danger">日</th>
+          <th class = "center">月</th>
+          <th class = "center">火</th>
+          <th class = "center">水</th>
+          <th class = "center">木</th>
+          <th class = "center">金</th>
+          <th class = "center text-primary">土</th>
         </tr>
       </thead>
   
@@ -50,7 +50,7 @@
                 
                 <!--もし昨日以降の古い日付(タイムゾーンつきで）xを表示  -->
                 <% if day.to_time.in_time_zone('Asia/Tokyo') < Date.current %>
-                  <button class="btn btn-default" disabled>x</button>
+                  x
 
 
                 <!--もし今月の最終日よりも未来日だったら(タイムゾーンつきで）-を表示  -->
