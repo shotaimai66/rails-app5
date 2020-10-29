@@ -6,7 +6,7 @@
 
 <div class="btn-users-show">
   <%= link_to "⇦ 前月へ", user_path(date: @first_day.prev_month), class: "btn btn-danger" %>
-  <%= link_to "次月へ ⇨", user_path(date: @first_day.next_month), class: "btn btn-danger" %>
+  <%= link_to "次月へ ⇨", user_path(date: @first_day.next_month), class: "btn btn-danger right" %>
 </div>
 
   <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
