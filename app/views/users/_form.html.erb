@@ -7,21 +7,13 @@
   <%= f.label :email,class: "label-#{yield(:class_text)}" %>
   <%= f.email_field :email, class: "form-control" %>
 
-
-  <% if current_user.tutor? %>
-    <%= f.label :favorite_subject, class: "label-#{yield(:class_text)}" %>
-    <%= f.text_field :favorite_subject, class: "form-control" %>
-  <% end %>
-  <% if !current_user.admin? %>
-    <%= f.label :self_introduction, class: "label-#{yield(:class_text)}" %>
-    <%= f.text_field :self_introduction, class: "form-control" %>
-  <% end %>
-
   <%= f.label :password, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password, class: "form-control" %>
   
   <%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password_confirmation, class: "form-control" %>
+  
+  <%= f.hidden_field :parent, :value => true %>
   
   <%= f.submit yield(:button_text), class: "btn btn-danger btn-block btn-#{yield(:class_text)}" %>
   
