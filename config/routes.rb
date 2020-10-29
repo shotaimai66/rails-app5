@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   post  '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
- 
+  get "/users/tutor_new", to: 'users#tutor_new'
+  post "/users/tutor_create", to: 'users#tutor_create'
 
   resources :users do
     member do

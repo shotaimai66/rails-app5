@@ -29,7 +29,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
+  def tutor_new
+    @user = User.new
+  end
+
   def create
     @user = User.new(
       user_params
@@ -42,6 +46,20 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def tutor_create
+    @user = User.new(
+      user_params
+    )
+    if @user.save
+      log_in @user
+      flash[:success] = '新規作成に成功しました。'
+      redirect_to @user 
+    else
+      render :new
+    end
+  end
+
   
   def edit
   end
