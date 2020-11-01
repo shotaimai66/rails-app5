@@ -1,7 +1,4 @@
-/Attendance-Tutorial/app/views/attendances/_check_reservation.html.erbをform_withで書いたバージョン
-
-
-
+<!--Attendance-Tutorial/app/views/attendances/_check_reservation.html.erbをform_withで書いたバージョン-->
 <% provide(:class_text, 'basic-info') %>
 
 <div class="modal-dialog modal-lg modal-dialog-center">
@@ -16,11 +13,16 @@
           <h1>家庭教師<%= @user.name %>さんへの家庭教師依頼が来ています。</h1>
 
           <%= form_with(model: @user, url: attendances_decide_reservation_user_path(date: @first_day), local: true, method: :patch) do |f| %>
+          <% @reservation_applications.each do |rsv| %>
+
           <table class="table table-bordered table-condensed table-hover" id="table-attendances">
             <thead>
               <tr>
                 <th>日付</th>
-                <th>曜日</th>
+                <th colspan="24"><%= l(rsv.worked_on, format: :long)%></th>
+              </tr>
+              <tr>
+                <th>時間</th>
                 <th>0時</th>
                 <th>1時</th>
                 <th>2時</th>
@@ -47,8 +49,8 @@
                 <th>23時</th>
               </tr>
             </thead>
+
             <tbody>
-              <% @reservation_applications.each do |rsv| %>
               <%
                 css_class = 
                 case $days_of_the_week[rsv.worked_on.wday]
@@ -59,36 +61,7 @@
                 end
               %>
               <tr>
-                <td><%= rsv.worked_on %></td>
-                <td><%= $days_of_the_week[rsv.worked_on.wday] %></td>
-                <td><%= rsv.lesson_status_00 %></td>
-                <td><%= rsv.lesson_status_01 %></td>
-                <td><%= rsv.lesson_status_02 %></td>
-                <td><%= rsv.lesson_status_03 %></td>
-                <td><%= rsv.lesson_status_04 %></td>
-                <td><%= rsv.lesson_status_05 %></td>
-                <td><%= rsv.lesson_status_06 %></td>
-                <td><%= rsv.lesson_status_07 %></td>
-                <td><%= rsv.lesson_status_08 %></td>
-                <td><%= rsv.lesson_status_09 %></td>
-                <td><%= rsv.lesson_status_10 %></td>
-                <td><%= rsv.lesson_status_11 %></td>
-                <td><%= rsv.lesson_status_12 %></td>
-                <td><%= rsv.lesson_status_13 %></td>
-                <td><%= rsv.lesson_status_14 %></td>
-                <td><%= rsv.lesson_status_15 %></td>
-                <td><%= rsv.lesson_status_16 %></td>
-                <td><%= rsv.lesson_status_17 %></td>
-                <td><%= rsv.lesson_status_18 %></td>
-                <td><%= rsv.lesson_status_19 %></td>
-                <td><%= rsv.lesson_status_20 %></td>
-                <td><%= rsv.lesson_status_21 %></td>
-                <td><%= rsv.lesson_status_22 %></td>
-                <td><%= rsv.lesson_status_23 %></td>
-              </tr>
-              <tr>
                 <td>依頼者</td>
-                <td></td>
                 <td><%= User.find(rsv.lesson_00_parent_id).name if rsv.lesson_00_parent_id.present? %></td>
                 <td><%= User.find(rsv.lesson_01_parent_id).name if rsv.lesson_01_parent_id.present? %></td>
                 <td><%= User.find(rsv.lesson_02_parent_id).name if rsv.lesson_02_parent_id.present? %></td>
@@ -116,8 +89,7 @@
               </tr>
               <%= f.fields_for "attendances[]", rsv do |attendance| %>
                 <tr>
-                  <td>承認</td>
-                  <td></td>
+                  <td>引き受けるor辞退する</td>
                   <td>
                     <% if rsv.lesson_status_00 == 2 %>
                       <%= attendance.radio_button :tutor_checker_0, :accept, checked: true %>
