@@ -1,10 +1,18 @@
 <% provide(:title, "Top") %>
 <div class="center jumbotron">
-  <h1>勤怠管理システム</h1>
-  <p>このアプリケーションでは、登録されたユーザーの勤怠情報を閲覧・登録・編集することができます。</p>
+  <h1>家庭教師を見つけよう</h1>
+
   <% if logged_in? %>
+    <button class="btn btn-lg btn-danger" disabled="disabled">ログイン</button>
+    <br>
+    <br>
     <button class="btn btn-lg btn-danger" disabled="disabled">ユーザー登録</button>
   <% else %>
-    <%= link_to "ユーザー登録", signup_path, class: "btn btn-lg btn-danger" %>
+    <%= link_to "ログイン", login_path, class: "btn btn-lg btn-danger" %>
+    <br>
+    <br>
+    <small>初めての方は・・・</small>
+    <br>
+    <%= link_to "新規ユーザー登録", signup_path, class: "btn btn-lg btn-danger" %>
   <% end %>
 </div>

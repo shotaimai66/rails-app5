@@ -1,51 +1,17 @@
 <% provide(:title, "テスト") %>
-<h1>家庭教師予約申請確認</h1>
 
-<p><%= @attendance.worked_on %></p>
-<p>家庭教師<%= @user.name %></p>
-<p><%= "#{@parent.name}さん、家庭教師#{@user.name}さんの#{@lesson_status_time}:00〜#{@lesson_status_time}:59の授業を予約申請をしますか？"%></p>
+<h1>授業のリクエストを送信しますか？</h1>
+
+<p><%= "#{@parent.name}さん、家庭教師#{@user.name}さんに#{l(@attendance.worked_on, format: :long)}　#{@lesson_status_time}:00〜#{@lesson_status_time}:59の授業をリクエストしますか？"%></p>
+
 
           <%= form_with(model: @user, url: attendances_update_reservation_user_path(@user), local: true, method: :patch) do |f| %>
-              <h2>家庭教師予約申請</h2>
-                <table class="table table-bordered table-condensed table-hover" id="table-attendances">
-                  <thead>
-                    <tr>
-                      <th>日付</th>
-                      <th>曜日</th>
-                      <th>時間帯</th>
-                      <th></th>
-                      <th><span class="label label-danger">必須</span>　終業務処理内容</th>
-                      <th><span class="label label-danger">必須</span>　指示者確認㊞</th>
-                    </tr>
-                  </thead>
-                <tbody>
-                        <%= f.fields_for @attendance do |af| %>
-                        <%
-                          css_class = 
-                          case $days_of_the_week[@attendance.worked_on.wday]
-                          when '土'
-                            'text-primary'
-                          when '日'
-                            'text-danger'
-                          end
-                        %>
-                        <tr>
-                          <td><%= l(@attendance.worked_on, format: :short) %></td>
-                          <td class="<%= css_class %>"><%= $days_of_the_week[@attendance.worked_on.wday] %></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-
-                              <%= af.hidden_field :user_id, :value => @attendance.user_id %>
-                              <%= af.hidden_field :lesson_time, :value=> @lesson_status_time %>
-                              <%= af.hidden_field :parent_id, :value=> @parent.id %>
-                              <%= af.hidden_field :lesson_status, :value=> 2 %>
-                              <%= af.hidden_field :attendance_id, :value=> @attendance.id %>
-                        </tr>
-                    <% end %>
-
-                </tbody>
-              </table>
-              <%= f.submit "予約申請を送信する", class: "btn btn-block btn-primary" %>
+            <%= f.fields_for @attendance do |af| %>
+              <%= af.hidden_field :user_id, :value => @attendance.user_id %>
+              <%= af.hidden_field :lesson_time, :value=> @lesson_status_time %>
+              <%= af.hidden_field :parent_id, :value=> @parent.id %>
+              <%= af.hidden_field :lesson_status, :value=> 2 %>
+              <%= af.hidden_field :attendance_id, :value=> @attendance.id %>
+            <% end %> 
+            <%= f.submit "予約申請を送信する", class: "btn btn-block btn-primary" %>
           <% end %>

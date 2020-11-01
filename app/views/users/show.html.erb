@@ -1,21 +1,41 @@
 <% provide(:title, @user.name) %>
 
 <!--ここから新記述-->
-<div>
-<h1><%= @user.name %>, <%= @user.email %></h1>
 
-<div class="btn-users-show">
-  <%= link_to "⇦ 前月へ", user_path(date: @first_day.prev_month), class: "btn btn-danger" %>
-  <%= link_to "次月へ ⇨", user_path(date: @first_day.next_month), class: "btn btn-danger right" %>
+
+
+ <!--＠userがTutorの時のみ、写真とプロフィールを表示-->
+<div>
+  <% if @user.tutor? %>
+    <h1>家庭教師　<%= @user.name %>さんの予約状況</h1>
+    <div class="center">
+  	  <% if @user.image.nil? %>
+  	    <%= image_tag "/user_images/default.png" %>
+    	  <% else %>
+  	    <%= image_tag "/user_images/#{@user.image}"%>
+  	  <% end %>
+  	
+    <!--得意科目-->
+    <P>得意科目：<%= @user.favorite_subject %></P>
+    <!--プロフイール-->
+    <p>プロフィール：</p>
+    <P><%= @user.self_introduction %></P>
+    </div>
+  <% end %>
 </div>
 
-  <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
-  <!--もしcurrent_userがtutorかつreservation_applicationsが存在すればボタン表示-->
-  <%= link_to "予約が入りました。ご確認お願いいたします。", attendances_check_reservation_user_path(@user), remote: true, class: "btn btn-danger" if current_user.tutor? && @reservation_applications.present? %>
+<h1><%= @first_day.year %>/<%= @first_day.month %></h1>
+<!--もしcurrent_userがtutorかつreservation_applicationsが存在すればボタン表示-->
+<%= link_to "予約が入りました。ご確認お願いいたします。", attendances_check_reservation_user_path(@user), remote: true, class: "btn btn-danger" if current_user.tutor? && @reservation_applications.present? %>
 
  <!--＠userがTutorの時のみ、カレンダーを表示-->
 <div>
   <% if @user.tutor? %>
+    <div class="btn-users-show">
+      <%= link_to "⇦ 前月へ", user_path(date: @first_day.prev_month), class: "btn btn-default" %>
+      <%= link_to "次月へ ⇨", user_path(date: @first_day.next_month), class: "btn btn-default right" %>
+    </div>
+    <br>
     <table class="table table-bordered table-condensed center">
       <thead>
         <tr>
@@ -28,7 +48,7 @@
           <th class = "center text-primary">土</th>
         </tr>
       </thead>
-  
+
       <tbody>
         <% month = [] %>
         <% week1 = @one_month_calendar.slice(0..6) %>
@@ -38,7 +58,6 @@
         <% week5 = @one_month_calendar.slice(28..34) %>
         <% week6 = @one_month_calendar.slice(35..45) %>
         <% month = [week1, week2, week3, week4, week5, week6] %>
-
 
         <% month.each do |week| %>
           <tr>
@@ -55,7 +74,7 @@
 
                 <!--もし今月の最終日よりも未来日だったら(タイムゾーンつきで）-を表示  -->
                 <% elsif day.to_time.in_time_zone('Asia/Tokyo') > @last_day %>
-                  <button class="btn btn-default" disabled>-</button>
+                  -
 
 
                 <!--もしcurrent_userがTutorだったら-->
@@ -95,8 +114,8 @@
 </div>
 
 <!--parentが予約ステータスを確認する部分-->
-
   <div>
+    <!--current_userがparentかつ@userがparentだった場合に表示されます-->
     <% if @parent_rsv_attendances.nil? %>
       <p>現在予約したレッスンはありません</p>
     <% elsif  @parent_rsv_attendances.present? %>
@@ -118,7 +137,7 @@
             
             <% if pra.lesson_status_00 == 2 ||  pra.lesson_status_00 == 3 || pra.lesson_status_00 == 4 || pra.lesson_status_00 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_00) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_00] %></td>
@@ -132,7 +151,7 @@
             <% end %>
             <% if pra.lesson_status_01 == 2 ||  pra.lesson_status_01 == 3 || pra.lesson_status_01 == 4 || pra.lesson_status_01 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_01) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_01] %></td>
@@ -146,7 +165,7 @@
             <% end %>
             <% if pra.lesson_status_02 == 2 ||  pra.lesson_status_02 == 3 || pra.lesson_status_02 == 4 || pra.lesson_status_02 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_02) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_02] %></td>
@@ -160,7 +179,7 @@
             <% end %>
             <% if pra.lesson_status_03 == 2 ||  pra.lesson_status_03 == 3 || pra.lesson_status_03 == 4 || pra.lesson_status_03 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_03) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_03] %></td>
@@ -174,7 +193,7 @@
             <% end %>
             <% if pra.lesson_status_04 == 2 ||  pra.lesson_status_04 == 3 || pra.lesson_status_04 == 4 || pra.lesson_status_04 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_04) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_04] %></td>
@@ -188,7 +207,7 @@
             <% end %>
             <% if pra.lesson_status_05 == 2 ||  pra.lesson_status_05 == 3 || pra.lesson_status_05 == 4 || pra.lesson_status_05 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_05) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_05] %></td>
@@ -202,7 +221,7 @@
             <% end %>
             <% if pra.lesson_status_06 == 2 ||  pra.lesson_status_06 == 3 || pra.lesson_status_06 == 4 || pra.lesson_status_06 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_06) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_06] %></td>
@@ -216,7 +235,7 @@
             <% end %>
             <% if pra.lesson_status_07 == 2 ||  pra.lesson_status_07 == 3 || pra.lesson_status_07 == 4 || pra.lesson_status_07 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_07) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_07] %></td>
@@ -230,7 +249,7 @@
             <% end %>
             <% if pra.lesson_status_08 == 2 ||  pra.lesson_status_08 == 3 || pra.lesson_status_08 == 4 || pra.lesson_status_08 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_08) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_08] %></td>
@@ -244,7 +263,7 @@
             <% end %>
             <% if pra.lesson_status_09 == 2 ||  pra.lesson_status_09 == 3 || pra.lesson_status_09 == 4 || pra.lesson_status_09 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_09) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_09] %></td>
@@ -258,7 +277,7 @@
             <% end %>
             <% if pra.lesson_status_10 == 2 ||  pra.lesson_status_10 == 3 || pra.lesson_status_10 == 4 || pra.lesson_status_10 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_10) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_10] %></td>
@@ -272,7 +291,7 @@
             <% end %>
             <% if pra.lesson_status_11 == 2 ||  pra.lesson_status_11 == 3 || pra.lesson_status_11 == 4 || pra.lesson_status_11 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_11) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_11] %></td>
@@ -286,7 +305,7 @@
             <% end %>
             <% if pra.lesson_status_12 == 2 ||  pra.lesson_status_12 == 3 || pra.lesson_status_12 == 4 || pra.lesson_status_12 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_12) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_12] %></td>
@@ -300,7 +319,7 @@
             <% end %>
             <% if pra.lesson_status_13 == 2 ||  pra.lesson_status_13 == 3 || pra.lesson_status_13 == 4 || pra.lesson_status_13 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_13) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_13] %></td>
@@ -314,7 +333,7 @@
             <% end %>
             <% if pra.lesson_status_14 == 2 ||  pra.lesson_status_14 == 3 || pra.lesson_status_14 == 4 || pra.lesson_status_14 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_14) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_14] %></td>
@@ -328,7 +347,7 @@
             <% end %>
             <% if pra.lesson_status_15 == 2 ||  pra.lesson_status_15 == 3 || pra.lesson_status_15 == 4 || pra.lesson_status_15 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_15) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_15] %></td>
@@ -342,7 +361,7 @@
             <% end %>
             <% if pra.lesson_status_16 == 2 ||  pra.lesson_status_16 == 3 || pra.lesson_status_16 == 4 || pra.lesson_status_16 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_16) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_16] %></td>
@@ -356,7 +375,7 @@
             <% end %>
             <% if pra.lesson_status_17 == 2 ||  pra.lesson_status_17 == 3 || pra.lesson_status_17 == 4 || pra.lesson_status_17 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_17) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_17] %></td>
@@ -370,7 +389,7 @@
             <% end %>
             <% if pra.lesson_status_18 == 2 ||  pra.lesson_status_18 == 3 || pra.lesson_status_18 == 4 || pra.lesson_status_18 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_18) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_18] %></td>
@@ -384,7 +403,7 @@
             <% end %>
             <% if pra.lesson_status_19 == 2 ||  pra.lesson_status_19 == 3 || pra.lesson_status_19 == 4 || pra.lesson_status_19 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_19) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_19] %></td>
@@ -398,7 +417,7 @@
             <% end %>
             <% if pra.lesson_status_20 == 2 ||  pra.lesson_status_20 == 3 || pra.lesson_status_20 == 4 || pra.lesson_status_20 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_20) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_20] %></td>
@@ -412,7 +431,7 @@
             <% end %>
             <% if pra.lesson_status_21 == 2 ||  pra.lesson_status_21 == 3 || pra.lesson_status_21 == 4 || pra.lesson_status_21 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_21) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_21] %></td>
@@ -426,7 +445,7 @@
             <% end %>
             <% if pra.lesson_status_22 == 2 ||  pra.lesson_status_22 == 3 || pra.lesson_status_22 == 4 || pra.lesson_status_22 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_22) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_22] %></td>
@@ -440,7 +459,7 @@
             <% end %>
             <% if pra.lesson_status_23 == 2 ||  pra.lesson_status_23 == 3 || pra.lesson_status_23 == 4 || pra.lesson_status_23 == 5 %>
               <tr>
-                <td><%= pra.worked_on %></td>
+                <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_23) %>時</td>
                 <td><%= User.find(pra.user_id).name %></td>
                 <td><%= $lesson_status[pra.lesson_status_23] %></td>

@@ -452,7 +452,8 @@
             </tbody>
           </table>
           <div class="center">
-   　　　      <%= f.submit "確定する", class: "btn btn-lg btn-primary" %>
+   　　　      <%= f.submit "確定する", class: "btn btn-lg btn-danger" %>
+            <%= link_to "キャンセル", user_path(@user), class: "btn btn-lg btn-default" %>
           </div>
           <% end %>
             <!--ここまでモーダルの中身-->
