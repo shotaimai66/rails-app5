@@ -145,6 +145,7 @@
                   <!--もし　レッスン完了時間から(0時予約の場合は１時をさす)1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_00 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 0, attendance: {lesson_status_00: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 0, attendance: {lesson_status_00: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -159,6 +160,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_01 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 1, attendance: {lesson_status_01: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 1, attendance: {lesson_status_01: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -173,6 +175,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_02 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 2, attendance: {lesson_status_02: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 2, attendance: {lesson_status_02: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -187,6 +190,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_03 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 3, attendance: {lesson_status_03: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 3, attendance: {lesson_status_03: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -201,6 +205,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_04 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 4, attendance: {lesson_status_04: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 4, attendance: {lesson_status_04: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -215,6 +220,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_05 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 5, attendance: {lesson_status_05: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 5, attendance: {lesson_status_05: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -229,6 +235,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_06 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 6, attendance: {lesson_status_06: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 6, attendance: {lesson_status_06: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -243,6 +250,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_07 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 7, attendance: {lesson_status_07: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 7, attendance: {lesson_status_07: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -257,6 +265,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_08 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 8, attendance: {lesson_status_08: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 8, attendance: {lesson_status_08: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -271,6 +280,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_09 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 9, attendance: {lesson_status_09: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 10, attendance: {lesson_status_10: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -285,6 +295,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_10 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 10, attendance: {lesson_status_10: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 10, attendance: {lesson_status_10: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -299,6 +310,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_11 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 11, attendance: {lesson_status_11: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 11, attendance: {lesson_status_11: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -313,6 +325,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_12 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 12, attendance: {lesson_status_12: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 12, attendance: {lesson_status_12: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -327,6 +340,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_13 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 13, attendance: {lesson_status_13: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 13, attendance: {lesson_status_13: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -341,6 +355,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_14 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 14, attendance: {lesson_status_14: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 14, attendance: {lesson_status_14: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -355,6 +370,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_15 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 15, attendance: {lesson_status_15: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 15, attendance: {lesson_status_15: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -369,6 +385,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_16 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 16, attendance: {lesson_status_16: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 16, attendance: {lesson_status_16: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -383,6 +400,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_17 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 17, attendance: {lesson_status_17: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 17, attendance: {lesson_status_17: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -397,6 +415,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_18 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 18, attendance: {lesson_status_18: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 18, attendance: {lesson_status_18: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -411,6 +430,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_19 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 19, attendance: {lesson_status_19: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 19, attendance: {lesson_status_19: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -425,6 +445,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_20 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 20, attendance: {lesson_status_20: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 20, attendance: {lesson_status_20: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -439,6 +460,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_21 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 21, attendance: {lesson_status_21: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra, lesson_time: 21, attendance: {lesson_status_21: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -453,6 +475,7 @@
                   <!--もし　レッスン完了時間か���1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_22 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 22, attendance: {lesson_status_22: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 22, attendance: {lesson_status_22: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
@@ -467,6 +490,7 @@
                   <!--もし　レッスン完了時間から1分経過していたら、完了ボタンを表示する-->
                   <% if Time.parse(pra.worked_on.to_s + " 1").in_time_zone < Time.current.since(1.minutes) && pra.lesson_status_23 == 3 %>
                     <%= link_to "レッスン完了！", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 23, attendance: {lesson_status_23: 6}), method: :patch, class: "btn btn-danger" %>
+                    <%= link_to "レッスンが行われなかった", attendances_parent_checked_user_path(@user, attendance_id: pra.id,attendance_id: pra,lesson_time: 23, attendance: {lesson_status_23: 7}), method: :patch, class: "btn btn-danger" %>
                   <% end %>
                 </td>
               </tr>
