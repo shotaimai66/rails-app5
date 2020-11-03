@@ -116,7 +116,7 @@
 <!--parentが予約ステータスを確認する部分-->
   <div>
     <!--current_userがparentかつ@userがparentだった場合に表示されます-->
-    <% if @parent_rsv_attendances.nil? %>
+    <% if @parent_rsv_attendances == [] %>
       <p>現在予約したレッスンはありません</p>
     <% elsif  @parent_rsv_attendances.present? %>
     
