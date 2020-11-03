@@ -173,7 +173,7 @@ class UsersController < ApplicationController
     )
     if @user.save
       log_in @user
-      flash[:success] = '新規作成に��功しました。'
+      flash[:success] = 'ユーザー登録に成功しました。'
       redirect_to @user 
     else
       render :new
@@ -186,7 +186,7 @@ class UsersController < ApplicationController
     )
     if @user.save
       log_in @user
-      flash[:success] = '新規作成に成功しました。'
+      flash[:success] = '家庭教師登録に成功しました。'
       redirect_to @user 
     else
       render :new
