@@ -226,7 +226,7 @@ class AttendancesController < ApplicationController
     end
     
     if @attendance.save
-      flash[:success] = "家庭教師　#{@user.name}さんの#{@attendance.worked_on}　#{param_lesson_status_time}時の授業の予約申請を送信しました。"
+      flash[:success] = "家庭教師　#{@user.name}さんの#{@attendance.worked_on}　#{param_lesson_status_time}時の授業リクエストを送信しました。"
       redirect_to @user
     else
       flash[:danger] = "予約申請に失敗しました。"
@@ -406,7 +406,7 @@ class AttendancesController < ApplicationController
 
       attendance.save
     end
-    flash[:success] = "1ヶ月分の授業の依頼を更新しました。"
+    flash[:success] = "1ヶ月分の授業リクエストを更新しました。"
     redirect_to user_url(@user)
   end
 
@@ -415,7 +415,7 @@ class AttendancesController < ApplicationController
     @user = User.find(params[:id])
     attendance = Attendance.find(params[:attendance_id])
     if attendance.update_attributes(attendance_params)
-      flash[:success] = "#{attendance.worked_on}の#{params[:lesson_time]}時のレッスンが完了が完了しました！"
+      flash[:success] = "#{attendance.worked_on}の#{params[:lesson_time]}時の授業が完了しました！"
       redirect_to @user
     else
       render :show

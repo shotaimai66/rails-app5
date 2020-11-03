@@ -121,21 +121,21 @@
     <% elsif  @parent_rsv_attendances.present? %>
     
       <h1><%= current_user.name %>さんの家庭教師レッスン予約状況</h1>
-      <table class="table table-bordered table-condensed">
+      <table class="table table-bordered table-condensed center">
         <thead>
           <tr>
-            <th>日付</th>
-            <th>時間</th>
-            <th>家庭教師</th>
-            <th>予約状況</th>
+            <th class="center">日付</th>
+            <th class="center">時間</th>
+            <th class="center">家庭教師</th>
+            <th class="center">予約状況</th>
             <th></th>
           </tr>
         </thead>
   
         <tbody>
           <% @parent_rsv_attendances.each do |pra| %>
-            
-            <% if pra.lesson_status_00 == 2 ||  pra.lesson_status_00 == 3 || pra.lesson_status_00 == 4 || pra.lesson_status_00 == 5 %>
+
+            <% if pra.lesson_status_00 == 2 ||  pra.lesson_status_00 == 3 || pra.lesson_status_00 == 4 || pra.lesson_status_00 == 5 || pra.lesson_status_00 == 8 %>
               <tr>
                 <td><%= l(pra.worked_on, format: :long) %></td>
                 <td><%= Attendance.human_attribute_name(:lesson_status_00) %>時</td>

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   $days_of_the_week = %w{日 月 火 水 木 金 土}
-  $lesson_status = %w{未 授業可能時間登録済み 予約申し込み中 承認 否認}
+  $lesson_status = %w{未 授業可能時間登録済み リクエスト中 リクエスト承認済 リクエスト否認済み 　 　 　 タイムアウトの為、自動キャンセル}
 
   #　beforeフィルター
    
@@ -88,6 +88,5 @@ class ApplicationController < ActionController::Base
   # rescue ActiveRecord::RecordInvalid # トランザクションによるエラーの分岐です。
   #   flash[:danger] = "ページ情報の取得に失敗しました、再アクセスしてください。"
   #   redirect_to root_url
-    
   end
 end
