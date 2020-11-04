@@ -96,12 +96,6 @@ class UsersController < ApplicationController
       @reservation_applications = reservation_applications
     end
 
-    # reservation_applications.each do |ra|
-    #   if ra.worked_on >= Date.today 
-    #     ra.
-    #   end
-    # end
-
     # current_userがparentだったらparentが予約申請した日のattendanceを@parent_rsv_attendancesに入れ、ステータスを確認できるようにする。
     # lesson_xx_parent_idにparentのidが入っていたら
     # nilの時はnilが入る
