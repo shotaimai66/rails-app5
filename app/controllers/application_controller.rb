@@ -38,8 +38,14 @@ class ApplicationController < ActionController::Base
 
    # tutorまたはparentかどうか判定します。
   def tutor_or_parent
-    # redirect_to root_url unless current_user.tutor? || current_user.parent?
-    redirect_to users_url unless current_user.tutor? || current_user.parent?
+    redirect_to root_url unless current_user.tutor? || current_user.parent?
+    # redirect_to users_url unless current_user.tutor? || current_user.parent?
+    # if current_user.parent?
+    #   redirect_to tutors_url
+    # elsif current_user.admin?
+    #   redirect_to users_url
+    # end
+    # redirect_to root_url unless current_user.tutor? || current_user.parent? || current_user.admin?
   end
 
   # ページ出力前に1ヶ月分のデータの存在を確認・セットします。

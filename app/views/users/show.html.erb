@@ -66,7 +66,7 @@
 
                 <!--日付表示　Date型 xxx.dayで日付を表示するメソッド-->
                 <small class= "text-light-gray"><%= day.day %></small><br>
-                
+
                 <!--もし昨日以降の古い日付(タイムゾーンつきで）xを表示  -->
                 <% if day.to_time.in_time_zone('Asia/Tokyo') < Date.current %>
                   x

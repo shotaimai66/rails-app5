@@ -2,7 +2,7 @@ module ApplicationHelper
   
   # ページごとにタイトルを返す
   def full_title(page_name = "")  # メソッドと引数の定義
-    base_title = "AttendanceApp"  # 基本となるアプリケーション名を変数に代入
+    base_title = "カテキョ"  # 基本となるアプリケーション名を変数に代入
     if page_name.empty?  # 引数を受け取っているかを判断
       base_title         # 引数page_nameが空文字の場合はbase_titleのみ返す
     else  # 引数page_namが空文字ではない場合
