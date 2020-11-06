@@ -229,7 +229,7 @@ class AttendancesController < ApplicationController
       flash[:success] = "家庭教師　#{@user.name}さんの#{@attendance.worked_on}　#{param_lesson_status_time}時の授業リクエストを送信しました。"
       redirect_to @user
     else
-      flash[:danger] = "予約申請に失敗しました。"
+      flash[:danger] = "授業リクエストに失敗しました。"
       redirect_to @user
     end
   end

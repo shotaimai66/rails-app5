@@ -157,6 +157,18 @@
                           <%= "-" %>
                         <% elsif @attendance.lesson_status_04 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_04 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_04 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_04 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_04 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_04 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_04 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
                         <% else %>
                           <%= af.check_box :lesson_status_04 , prompt: "" %>
                         <% end %>
@@ -166,6 +178,18 @@
                           <%= "-" %>
                         <% elsif @attendance.lesson_status_05 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_05 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_05 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_05 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_05 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_05 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_05 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
                         <% else %>
                           <%= af.check_box :lesson_status_05 , prompt: "" %>
                         <% end %>
@@ -175,6 +199,18 @@
                           <%= "-" %>
                         <% elsif @attendance.lesson_status_06 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_06 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_06 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_06 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_06 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_06 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_06 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
                         <% else %>
                           <%= af.check_box :lesson_status_06 , prompt: "" %>
                         <% end %>
@@ -188,6 +224,14 @@
                           <%= yield(:tutor_buttom_text_3) %>
                         <% elsif @attendance.lesson_status_07 == 4 %>
                           <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_07 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_07 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_07 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_07 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
                         <% else %>
                           <%= af.check_box :lesson_status_07 , prompt: "" %>
                         <% end %>
@@ -201,6 +245,15 @@
                           <%= yield(:tutor_buttom_text_3) %>
                         <% elsif @attendance.lesson_status_08 == 4 %>
                           <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_08 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_08 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_08 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_08 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+
                         <% else %>
                           <%= af.check_box :lesson_status_08 , prompt: "" %>
                         <% end %>
@@ -210,7 +263,420 @@
                           <%= "-" %>
                         <% elsif @attendance.lesson_status_09 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
-                        <% elsif @attendance.lesson_status_09 == 2 %>
+                        <% elsif @attendance.lesson_status_09 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_09 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_09 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_09 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_09 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_09 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_09 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 10 || Time.current.hour == 10 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_10 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_10 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_10 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_10 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_10 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_10 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_10 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_10 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 11 || Time.current.hour == 11 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_11 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_11 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_11 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_11 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_11 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_11 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_11 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_11 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 12 || Time.current.hour == 12 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_12 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_12 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_12 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_12 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_12 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_12 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_12 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_12 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 13 || Time.current.hour == 13 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_13 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_13 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_13 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_13 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_13 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_13 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_13 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_13 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 14 || Time.current.hour == 14 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_14 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_14 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_14 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_14 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_14 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_14 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_14 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_14 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 15 || Time.current.hour == 15 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_15 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_15 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_15 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_15 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_15 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_15 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_15 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_15 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 16 || Time.current.hour == 16 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_16 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_16 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_16 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_16 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_16 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_16 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_16 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_16 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 17 || Time.current.hour == 17 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_17 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_17 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_17 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_17 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_17 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_17 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_17 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_17 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 18 || Time.current.hour == 18 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_18 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_18 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_18 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_18 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_18 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_18 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_18 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_18 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 19 || Time.current.hour == 19 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_19 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_19 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_19 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_19 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_19 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_19 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_19 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_19 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 20 || Time.current.hour == 20 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_20 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_20 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_20 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_20 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_20 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_20 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_20 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_20 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 21 || Time.current.hour == 21 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_21 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_21 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_21 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_21 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_21 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_21 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_21 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+
+                        <% else %>
+                          <%= af.check_box :lesson_status_21 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 22 || Time.current.hour == 22 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_22 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_22 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_22 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_22 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_22 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_22 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_22 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_22 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if Time.current.hour > 23 || Time.current.hour == 23 %>
+                          <%= "-" %>
+                        <% elsif @attendance.lesson_status_23 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_23 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_23 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                         <% elsif @attendance.lesson_status_23 == 5 %>
+                          <%= yield(:tutor_buttom_text_5) %>
+                        <% elsif @attendance.lesson_status_23 == 6 %>
+                          <%= yield(:tutor_buttom_text_6) %>
+                        <% elsif @attendance.lesson_status_23 == 7 %>
+                          <%= yield(:tutor_buttom_text_7) %>
+                        <% elsif @attendance.lesson_status_23 == 8 %>
+                          <%= yield(:tutor_buttom_text_8) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_23 , prompt: "" %>
+                        <% end %>
+                      </td>
+                    <!--もし授業可能時間を設定した日が、本日意外だったら、ステータス２の時は「依頼受信中」を表示、ステータス３は。。。、ステータス４は、、、それ以外はチェックボックスを表示-->
+                    <% else %>
+                      <td>
+                        <% if @attendance.lesson_status_00 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_00 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_00 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_00 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_01 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_01 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_01 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_01 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_02 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_02 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_02 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_02 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_03 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_03 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_03 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_03 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_04 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_04 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_04 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_04 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_05 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_05 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_05 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_05 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_06 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_06 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_06 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_06 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_07 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_07 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_07 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_07 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_08 == 2 %>
+                          <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_08 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_08 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
+                        <% else %>
+                          <%= af.check_box :lesson_status_08 , prompt: "" %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if @attendance.lesson_status_09 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
                         <% elsif @attendance.lesson_status_09 == 3 %>
                           <%= yield(:tutor_buttom_text_3) %>
@@ -221,206 +687,12 @@
                         <% end %>
                       </td>
                       <td>
-                        <% if Time.current.hour > 10 || Time.current.hour == 10 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_10 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_10 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 11 || Time.current.hour == 11 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_11 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_11 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 12 || Time.current.hour == 12 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_12 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_12 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 13 || Time.current.hour == 13 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_13 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_13 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 14 || Time.current.hour == 14 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_14 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_14 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 15 || Time.current.hour == 15 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_15 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_15 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 16 || Time.current.hour == 16 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_16 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_16 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 17 || Time.current.hour == 17 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_17 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_17 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 18 || Time.current.hour == 18 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_18 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_18 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 19 || Time.current.hour == 19 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_19 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_19 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 20 || Time.current.hour == 20 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_20 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_20 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 21 || Time.current.hour == 21 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_21 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_21 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 22 || Time.current.hour == 22 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_22 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_22 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if Time.current.hour > 23 || Time.current.hour == 23 %>
-                          <%= "-" %>
-                        <% elsif @attendance.lesson_status_23 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_23 , prompt: "" %>
-                        <% end %>
-                      </td>
-                    <!--もし授業可能時間を設定した日が、本日意外だったら、ステータス２の時は「依頼受信中」を表示、それ以外はチェックボックスを表示-->
-                    <% else %>
-                      <td>
-                        <% if @attendance.lesson_status_00 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_00 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_01 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_01 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_02 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_02 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_03 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_03 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_04 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_04 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_05 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_05 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_06 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_06 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_07 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_07 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_08 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_08 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
-                        <% if @attendance.lesson_status_09 == 2 %>
-                          <%= yield(:tutor_buttom_text_2) %>
-                        <% else %>
-                          <%= af.check_box :lesson_status_09 , prompt: "" %>
-                        <% end %>
-                      </td>
-                      <td>
                         <% if @attendance.lesson_status_10 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_10 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_10 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_10 , prompt: "" %>
                         <% end %>
@@ -428,6 +700,10 @@
                       <td>
                         <% if @attendance.lesson_status_11 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_11 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_11 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_11 , prompt: "" %>
                         <% end %>
@@ -435,6 +711,10 @@
                       <td>
                         <% if @attendance.lesson_status_12 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_12 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_12 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_12 , prompt: "" %>
                         <% end %>
@@ -442,6 +722,10 @@
                       <td>
                         <% if @attendance.lesson_status_13 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_13 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_13 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_13 , prompt: "" %>
                         <% end %>
@@ -449,6 +733,10 @@
                       <td>
                         <% if @attendance.lesson_status_14 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_14 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_14 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_14 , prompt: "" %>
                         <% end %>
@@ -456,6 +744,10 @@
                       <td>
                         <% if @attendance.lesson_status_15 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_15 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_15 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_15 , prompt: "" %>
                         <% end %>
@@ -463,6 +755,10 @@
                       <td>
                         <% if @attendance.lesson_status_16 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_16 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_16 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_16 , prompt: "" %>
                         <% end %>
@@ -470,6 +766,10 @@
                       <td>
                         <% if @attendance.lesson_status_17 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_17 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_17 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_17 , prompt: "" %>
                         <% end %>
@@ -477,6 +777,10 @@
                       <td>
                         <% if @attendance.lesson_status_18 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_18 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_18 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_18 , prompt: "" %>
                         <% end %>
@@ -484,6 +788,10 @@
                       <td>
                         <% if @attendance.lesson_status_19 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_19 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_19 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_19 , prompt: "" %>
                         <% end %>
@@ -491,6 +799,10 @@
                       <td>
                         <% if @attendance.lesson_status_20 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_20 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_20 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_20 , prompt: "" %>
                         <% end %>
@@ -498,6 +810,10 @@
                      <td>
                         <% if @attendance.lesson_status_21 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_21 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_21 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_21 , prompt: "" %>
                         <% end %>
@@ -505,6 +821,10 @@
                       <td>
                         <% if @attendance.lesson_status_22 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_22 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_22 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_22 , prompt: "" %>
                         <% end %>
@@ -512,6 +832,10 @@
                       <td>
                         <% if @attendance.lesson_status_23 == 2 %>
                           <%= yield(:tutor_buttom_text_2) %>
+                        <% elsif @attendance.lesson_status_23 == 3 %>
+                          <%= yield(:tutor_buttom_text_3) %>
+                        <% elsif @attendance.lesson_status_23 == 4 %>
+                          <%= yield(:tutor_buttom_text_4) %>
                         <% else %>
                           <%= af.check_box :lesson_status_23 , prompt: "" %>
                         <% end %>
@@ -522,7 +846,7 @@
           </table>
           <div class="center">
    　　　      <%= f.submit "確定する", class: "btn btn-lg btn-danger" %>
-            <%= link_to "キャンセル", user_path(@user), class: "btn btn-lg btn-default" %>
+            <%= link_to "戻る", user_path(@user), class: "btn btn-lg btn-default" %>
           </div>
           <% end %>
             <!--ここまでモーダルの中身-->
