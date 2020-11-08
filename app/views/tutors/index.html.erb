@@ -15,9 +15,11 @@
       	<div class="panel-body">
       	  <div class="center">
         	  <% if user.image.nil? %>
-        	    <%= image_tag "/user_images/default.png" %>
+        	    <div>
+        	      <%= image_tag "/user_images/default.png", class:"img-responsive" %>
+        	    </div>
         	  <% else %>
-        	    <%= image_tag "/user_images/#{user.image}"%>
+        	    <%= image_tag "/user_images/#{user.image}", class:"img-responsive"%>
         	 <% end %>
         	  </div>
       	  <!--得意科目-->
