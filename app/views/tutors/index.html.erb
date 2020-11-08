@@ -16,7 +16,7 @@
       	  <div class="center">
         	  <% if user.image.nil? %>
         	    <div>
-        	      <%= image_tag "/user_images/default.png", class:"img-responsive" %>
+        	      <%= image_tag "/user_images/default.png" %>
         	    </div>
         	  <% else %>
         	    <%= image_tag "/user_images/#{user.image}", class:"img-responsive"%>
