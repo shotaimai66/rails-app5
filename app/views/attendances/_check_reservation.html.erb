@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <!--ここからモーダルの中身-->
-          <h1>家庭教師<%= @user.name %>さんへの家庭教師依頼が来ています。</h1>
+          <h1>家庭教師　<%= @user.name %>さんへ授業リクエストが届きました。</h1>
 
           <%= form_with(model: @user, url: attendances_decide_reservation_user_path(date: @first_day), local: true, method: :patch) do |f| %>
           <% @reservation_applications.each do |rsv| %>
