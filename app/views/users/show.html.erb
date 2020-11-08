@@ -27,7 +27,8 @@
 <h1><%= @first_day.year %>/<%= @first_day.month %></h1>
 <!--もしcurrent_userがtutorかつreservation_applicationsが存在すればボタン表示-->
 <%= link_to "予約が入りました。ご確認お願いいたします。", attendances_check_reservation_user_path(@user), remote: true, class: "btn btn-danger" if current_user.tutor? && @reservation_applications.present? %>
-
+<br>
+<br>
  <!--＠userがTutorの時のみ、カレンダーを表示-->
 <div>
   <% if @user.tutor? %>
