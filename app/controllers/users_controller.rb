@@ -101,53 +101,55 @@ class UsersController < ApplicationController
     # nilの時はnilが入る
     # @parent_rsv_attendances = current_user.parent? || current_user == @user ? Attendance.where("(lesson_00_parent_id = ?) OR (lesson_01_parent_id = ?) OR (lesson_02_parent_id = ?) OR (lesson_03_parent_id = ?) OR (lesson_04_parent_id = ?) OR (lesson_05_parent_id = ?) OR (lesson_06_parent_id = ?) OR (lesson_07_parent_id = ?) OR (lesson_08_parent_id = ?) OR (lesson_09_parent_id = ?) OR (lesson_10_parent_id = ?) OR (lesson_11_parent_id = ?) OR (lesson_12_parent_id = ?) OR (lesson_13_parent_id = ?) OR (lesson_14_parent_id = ?) OR (lesson_15_parent_id = ?) OR (lesson_16_parent_id = ?) OR (lesson_17_parent_id = ?) OR (lesson_18_parent_id = ?) OR (lesson_19_parent_id = ?) OR (lesson_20_parent_id = ?) OR (lesson_21_parent_id = ?) OR (lesson_22_parent_id = ?) OR (lesson_23_parent_id = ?)", @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id).order(worked_on: "DESC") : nil
     parent_rsv_attendances = current_user.parent? || current_user == @user ? Attendance.where("(lesson_00_parent_id = ?) OR (lesson_01_parent_id = ?) OR (lesson_02_parent_id = ?) OR (lesson_03_parent_id = ?) OR (lesson_04_parent_id = ?) OR (lesson_05_parent_id = ?) OR (lesson_06_parent_id = ?) OR (lesson_07_parent_id = ?) OR (lesson_08_parent_id = ?) OR (lesson_09_parent_id = ?) OR (lesson_10_parent_id = ?) OR (lesson_11_parent_id = ?) OR (lesson_12_parent_id = ?) OR (lesson_13_parent_id = ?) OR (lesson_14_parent_id = ?) OR (lesson_15_parent_id = ?) OR (lesson_16_parent_id = ?) OR (lesson_17_parent_id = ?) OR (lesson_18_parent_id = ?) OR (lesson_19_parent_id = ?) OR (lesson_20_parent_id = ?) OR (lesson_21_parent_id = ?) OR (lesson_22_parent_id = ?) OR (lesson_23_parent_id = ?)", @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id, @user.id).order(worked_on: "DESC") : nil
-    
-    parent_rsv_attendances.each do |pra|
-      # ステータス２のまま授業時間になったらタイムアウトステータス８を入れる
-      if pra.worked_on <= Date.today 
-        if pra.lesson_00_parent_id == current_user.id && Time.current.hour >= 0 && pra.lesson_status_00 == 2
-          pra.lesson_status_00 = 8
+
+    if parent_rsv_attendances.present?
+      parent_rsv_attendances.each do |pra|
+        # ステータス２のまま授業時間になったらタイムアウトステータス８を入れる
+        if pra.worked_on <= Date.today 
+          if pra.lesson_00_parent_id == current_user.id && Time.current.hour >= 0 && pra.lesson_status_00 == 2
+            pra.lesson_status_00 = 8
+          end
+          if pra.lesson_01_parent_id == current_user.id && Time.current.hour >= 1 && pra.lesson_status_01 == 2
+            pra.lesson_status_01 = 8
+          end
+          if pra.lesson_02_parent_id == current_user.id && Time.current.hour >= 2 && pra.lesson_status_02 == 2
+            pra.lesson_status_02 = 8
+          end
+          if pra.lesson_03_parent_id == current_user.id && Time.current.hour >= 3 && pra.lesson_status_03 == 2
+            pra.lesson_status_03 = 8
+          end
+          if pra.lesson_04_parent_id == current_user.id && Time.current.hour >= 4 && pra.lesson_status_04 == 2
+            pra.lesson_status_04 = 8
+          end
+          if pra.lesson_05_parent_id == current_user.id && Time.current.hour >= 5 && pra.lesson_status_05 == 2
+            pra.lesson_status_05 = 8
+          end
+          if pra.lesson_06_parent_id == current_user.id && Time.current.hour >= 6 && pra.lesson_status_06 == 2
+            pra.lesson_status_06 = 8
+          end
+          if pra.lesson_07_parent_id == current_user.id && Time.current.hour >= 7 && pra.lesson_status_07 == 2
+            pra.lesson_status_07 = 8
+          end
+          if pra.lesson_08_parent_id == current_user.id && Time.current.hour >= 8 && pra.lesson_status_08 == 2
+            pra.lesson_status_08 = 8
+          end
+          if pra.lesson_09_parent_id == current_user.id && Time.current.hour >= 9 && pra.lesson_status_09 == 2
+            pra.lesson_status_09 = 8
+          end
+          if pra.lesson_10_parent_id == current_user.id && Time.current.hour >= 10 && pra.lesson_status_10 == 2
+            pra.lesson_status_10 = 8
+          end
+          if pra.lesson_11_parent_id == current_user.id && Time.current.hour >= 11 && pra.lesson_status_11 == 2
+            pra.lesson_status_11 = 8
+          end
+          if pra.lesson_12_parent_id == current_user.id && Time.current.hour >= 12 && pra.lesson_status_12 == 2
+            pra.lesson_status_12 = 8
+          end
+          if pra.lesson_13_parent_id == current_user.id && Time.current.hour >= 13 && pra.lesson_status_13 == 2
+            pra.lesson_status_13 = 8
+          end
+          pra.save
         end
-        if pra.lesson_01_parent_id == current_user.id && Time.current.hour >= 1 && pra.lesson_status_01 == 2
-          pra.lesson_status_01 = 8
-        end
-        if pra.lesson_02_parent_id == current_user.id && Time.current.hour >= 2 && pra.lesson_status_02 == 2
-          pra.lesson_status_02 = 8
-        end
-        if pra.lesson_03_parent_id == current_user.id && Time.current.hour >= 3 && pra.lesson_status_03 == 2
-          pra.lesson_status_03 = 8
-        end
-        if pra.lesson_04_parent_id == current_user.id && Time.current.hour >= 4 && pra.lesson_status_04 == 2
-          pra.lesson_status_04 = 8
-        end
-        if pra.lesson_05_parent_id == current_user.id && Time.current.hour >= 5 && pra.lesson_status_05 == 2
-          pra.lesson_status_05 = 8
-        end
-        if pra.lesson_06_parent_id == current_user.id && Time.current.hour >= 6 && pra.lesson_status_06 == 2
-          pra.lesson_status_06 = 8
-        end
-        if pra.lesson_07_parent_id == current_user.id && Time.current.hour >= 7 && pra.lesson_status_07 == 2
-          pra.lesson_status_07 = 8
-        end
-        if pra.lesson_08_parent_id == current_user.id && Time.current.hour >= 8 && pra.lesson_status_08 == 2
-          pra.lesson_status_08 = 8
-        end
-        if pra.lesson_09_parent_id == current_user.id && Time.current.hour >= 9 && pra.lesson_status_09 == 2
-          pra.lesson_status_09 = 8
-        end
-        if pra.lesson_10_parent_id == current_user.id && Time.current.hour >= 10 && pra.lesson_status_10 == 2
-          pra.lesson_status_10 = 8
-        end
-        if pra.lesson_11_parent_id == current_user.id && Time.current.hour >= 11 && pra.lesson_status_11 == 2
-          pra.lesson_status_11 = 8
-        end
-        if pra.lesson_12_parent_id == current_user.id && Time.current.hour >= 12 && pra.lesson_status_12 == 2
-          pra.lesson_status_12 = 8
-        end
-        if pra.lesson_13_parent_id == current_user.id && Time.current.hour >= 13 && pra.lesson_status_13 == 2
-          pra.lesson_status_13 = 8
-        end
-        pra.save
       end
     end
     @parent_rsv_attendances = parent_rsv_attendances
