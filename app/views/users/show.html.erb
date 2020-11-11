@@ -1,5 +1,11 @@
 <% provide(:title, @user.name) %>
 <!--ここから新記述-->
+<div class="center">
+  <p>QRコードでカテキョをLINEに友達追加</p>
+  <div>
+    <%= image_tag "/images/qr-code.png" %>
+  </div>
+</div>
  <!--＠userがTutorの時のみ、写真とプロフィールを表示-->
 <div>
   <% if @user.tutor? %>
