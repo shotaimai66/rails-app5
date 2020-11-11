@@ -27,9 +27,41 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   port:                 587,
+  #   address:              'smtp.gmail.com',
+  #   domain:               'gmail.com',
+  #   user_name:            'xxxx@gmail.com',
+  #   password:             'xxxx',
+  #   authentication:       'login',
+  #   enable_starttls_auto: true
+  # }
+  
+#   ActionMailer::Base.delivery_method = :smtp
+#   ActionMailer::Base.smtp_settings = {
+#   address: 'smtp.gmail.com',
+#   domain: 'gmail.com',
+#   port: 587,
+#   user_name: 'xxxx@gmail.com',
+#   password: 'xxxx',
+#   authentication: 'plain',
+#   enable_starttls_auto: true
+# }
+
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  # address:              'smtp.gmail.com',
+  # port:                  587,
+  # domain:               'gmail.com',
+  # user_name:            'xxx@gmail.com',
+  # password:             'xxxx',
+  # authentication:       'plain',
+  # enable_starttls_auto:  true
+  # }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

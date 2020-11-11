@@ -12,6 +12,11 @@ class UsersController < ApplicationController
   end
   
   def show
+    # メールのテスト
+    # ContactMailer.send_confirm_to_user(@user).deliver
+    # ContactMailer.send_mail(@user)
+    # ContactMailer.send_mail(@user)
+
     # tutorの表示用。
     # 予約申請があったらボタンを表示しそこに入る情報としてattendance達が入っている
     # 授業の予約申請を取得し@reservation_applicationsに入れる
