@@ -1,11 +1,7 @@
 <% provide(:title, @user.name) %>
 <!--ここから新記述-->
-<div class="center">
-  <p>QRコードでカテキョをLINEに友達追加</p>
-  <div>
-    <%= image_tag "/images/qr-code.png" %>
-  </div>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xV9pzL0oC3Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xV9pzL0oC3Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  <!--＠userがTutorの時のみ、写真とプロフィールを表示-->
 <div>
   <% if @user.tutor? %>

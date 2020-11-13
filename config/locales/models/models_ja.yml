@@ -46,3 +46,8 @@ ja:
           lesson_status_21: 21
           lesson_status_22: 22
           lesson_status_23: 23
+        myvideo:
+          title: タイトル
+          explanation: 説明
+          youtube_url: YouTubeのURL
+          
