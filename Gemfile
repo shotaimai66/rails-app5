@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
+ruby '2.6.5'
 
-gem 'rails',        '~> 5.1.6'
+gem 'rails',                   '5.1.4'
+
+# gem 'rails',        '~> 5.1.6'
 gem 'rails-i18n'
 gem 'bcrypt'
 gem 'faker'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'puma',         '~> 3.7'
+# gem 'puma',         '~> 3.7'
+# 追加
+gem 'puma', '~> 3.11'
 gem 'sass-rails',   '~> 5.0'
 gem 'uglifier',     '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -18,9 +23,12 @@ gem 'jbuilder',     '~> 2.5'
 gem 'line-bot-api'
 gem 'dotenv-rails'       #環境変数を管理するgem
 gem 'whenever', require: false  # gem 'whenever'を追加する。
+# 追加
+gem 'mysql2', '~> 0.4.4'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
+  # コメントアウト
+  # gem 'sqlite3', '1.3.13'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -32,7 +40,8 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
+  # コメントアウト
+  # gem 'pg', '0.20.0'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
