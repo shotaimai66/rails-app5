@@ -16,10 +16,12 @@
       	  <div class="center">
         	  <% if user.image.nil? %>
         	    <div>
-        	      <%= image_tag "/user_images/default.png" %>
+        	      <%# <%= image_tag "/user_images/default.png" %>
+								<%= image_tag asset_path("/user_images/default.png", alt: "ユーザープロフィールデフォルト画像") %>
         	    </div>
         	  <% else %>
-        	    <%= image_tag "/user_images/#{user.image}", class:"img-responsive"%>
+        	    <%# <%= image_tag "/user_images/#{user.image}", class:"img-responsive"%>
+							<%= image_tag asset_path("/user_images/#{user.image}", alt: "プロフィール画像"), class: "img-responsive" %>
         	 <% end %>
         	  </div>
       	  <!--得意科目-->
