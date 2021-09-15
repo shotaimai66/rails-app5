@@ -7,6 +7,10 @@ gem 'rails',                   '5.1.4'
 gem 'rails-i18n'
 gem 'bcrypt'
 gem 'faker'
+# for image uploader with AWS S3 追加
+gem 'carrierwave'
+# 追加
+gem 'fog-aws'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'

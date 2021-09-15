@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :myvideos, dependent: :destroy
-  
+  mount_uploader :image, ImageUploader
+
   # 「remember_token」という仮想の属性を作成します。
   attr_accessor :remember_token
   before_save { self.email = email.downcase}

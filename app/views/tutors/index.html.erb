@@ -2,11 +2,11 @@
 
 <h1>家庭教師一覧</h1>
 
-<%= will_paginate %>
+<%# <%= will_paginate %>
 
 <!--ここから新しい家庭教師一覧-->
 <div class="row sampleRow">
-  <% @tutors.each do |user| %>
+  <% @users.each do |user| %>
   	<div class="col-xs-12 col-sm-6">
   	 <div class="panel panel-danger">
       	<div class="panel-heading">
@@ -14,14 +14,12 @@
       	</div>
       	<div class="panel-body">
       	  <div class="center">
-        	  <% if user.image.nil? %>
+        	  <% if user.image? %>
         	    <div>
-        	      <%# <%= image_tag "/user_images/default.png" %>
-								<%= image_tag asset_path("/user_images/default.png", alt: "ユーザープロフィールデフォルト画像") %>
+        	      <%= image_tag user.image.url %>
         	    </div>
         	  <% else %>
-        	    <%# <%= image_tag "/user_images/#{user.image}", class:"img-responsive"%>
-							<%= image_tag asset_path("/user_images/#{user.image}", alt: "プロフィール画像"), class: "img-responsive" %>
+							<%= image_tag asset_path("/user_images/default.png", alt: "ユーザープロフィールデフォルト画像") %>
         	 <% end %>
         	  </div>
       	  <!--得意科目-->
@@ -35,7 +33,7 @@
   <% end %>
 </div>
 <!--ここまで新しい家庭教師一覧-->
-  <%= will_paginate %>
+  <%# <%= will_paginate %>
 
 <!--モーダルウィンドウ表示-->
 <div id="edit-basic-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

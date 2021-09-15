@@ -206,10 +206,10 @@ class UsersController < ApplicationController
     @user.email = params[:user][:email]
     @user.self_introduction = params[:user][:self_introduction]
     @user.password = params[:user][:password]
-    if params[:user][:image]
-      @user.image = "user_#{@user.id}.png"
-      File.binwrite("public/user_images/#{@user.image}", params[:user][:image].read)
-    end  
+    # if params[:user][:image]
+    #   @user.image = "user_#{@user.id}.png"
+    #   File.binwrite("public/user_images/#{@user.image}", params[:user][:image].read)
+    # end  
     if @user.save
       flash[:success] = "ユーザー情報を更新しました"
       redirect_to @user
