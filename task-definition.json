@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/rails",
+          "awslogs-group": "/ecs/rails5",
           "awslogs-region": "ap-northeast-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -25,44 +25,52 @@
       "command": null,
       "linuxParameters": null,
       "cpu": 0,
-      "environment": [
-        {
-          "name": "RAILS_ENV",
-          "value": "production"
-        },
-        {
-          "name": "RDS_DB_NAME",
-          "value": "test_bd"
-        },
-        {
-          "name": "RDS_HOSTNAME",
-          "value": "database-1.cemhqhnpqcx8.ap-northeast-1.rds.amazonaws.com"
-        },
-        {
-          "name": "RDS_PASSWORD",
-          "value": "password"
-        },
-        {
-          "name": "RDS_PORT",
-          "value": "3306"
-        },
-        {
-          "name": "RDS_USERNAME",
-          "value": "admin"
-        }
-      ],
+      "environment": [],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
       "mountPoints": [],
       "workingDirectory": null,
-      "secrets": null,
+      "secrets": [
+        {
+          "valueFrom": "rails_aws_access_key_id",
+          "name": "AWS_ACCESS_KEY_ID"
+        },
+        {
+          "valueFrom": "rails_aws_secret_access_key",
+          "name": "AWS_SECRET_ACCESS_KEY"
+        },
+        {
+          "valueFrom": "rails-rails-env",
+          "name": "RAILS_ENV"
+        },
+        {
+          "valueFrom": "rails-rds-db-name",
+          "name": "RDS_DB_NAME"
+        },
+        {
+          "valueFrom": "rails-rds-hostname",
+          "name": "RDS_HOSTNAME"
+        },
+        {
+          "valueFrom": "password",
+          "name": "RDS_PASSWORD"
+        },
+        {
+          "valueFrom": "rails-rds-port",
+          "name": "RDS_PORT"
+        },
+        {
+          "valueFrom": "rails-rds-username",
+          "name": "RDS_USERNAME"
+        }
+      ],
       "dockerSecurityOptions": null,
       "memory": null,
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "933175109264.dkr.ecr.ap-northeast-1.amazonaws.com/rails",
+      "image": "933175109264.dkr.ecr.ap-northeast-1.amazonaws.com/rails5:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -79,7 +87,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "rails"
+      "name": "rails5"
     }
   ],
   "placementConstraints": [],
@@ -89,8 +97,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:933175109264:task-definition/rails:31",
-  "family": "rails",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:933175109264:task-definition/rails5:3",
+  "family": "rails5",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -132,6 +140,12 @@
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "ecs.capability.secrets.ssm.environment-variables"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
     },
     {
@@ -147,7 +161,7 @@
   ],
   "networkMode": "awsvpc",
   "cpu": "256",
-  "revision": 31,
+  "revision": 3,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
