@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page])
   end
-  
+
   def show
     # メールのテスト
     # ContactMailer.send_confirm_to_user(@user).deliver
@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     if parent_rsv_attendances.present?
       parent_rsv_attendances.each do |pra|
         # ステータス２のまま授業時間になったらタイムアウトステータス８を入れる
-        if pra.worked_on <= Date.today 
+        if pra.worked_on <= Date.today
           if pra.lesson_00_parent_id == current_user.id && Time.current.hour >= 0 && pra.lesson_status_00 == 2
             pra.lesson_status_00 = 8
           end
@@ -159,7 +159,7 @@ class UsersController < ApplicationController
     end
     @parent_rsv_attendances = parent_rsv_attendances
   end
-  
+
   def new
     @user = User.new
   end
@@ -175,12 +175,12 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = 'ユーザー登録に成功しました。'
-      redirect_to @user 
+      redirect_to @user
     else
       render :new
     end
   end
-  
+
   def tutor_create
     @user = User.new(
       user_params
@@ -188,7 +188,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = '家庭教師登録に成功しました。'
-      redirect_to @user 
+      redirect_to @user
     else
       render :new
     end
@@ -206,10 +206,9 @@ class UsersController < ApplicationController
     @user.email = params[:user][:email]
     @user.self_introduction = params[:user][:self_introduction]
     @user.password = params[:user][:password]
-    # if params[:user][:image]
-    #   @user.image = "user_#{@user.id}.png"
-    #   File.binwrite("public/user_images/#{@user.image}", params[:user][:image].read)
-    # end  
+    if params[:user][:image]
+      @user.image = params[:user][:image]
+    end
     if @user.save
       flash[:success] = "ユーザー情報を更新しました"
       redirect_to @user
@@ -217,16 +216,16 @@ class UsersController < ApplicationController
        render :edit
     end
   end
-  
+
   def destroy
     @user.destroy
     flash[:success] = "#{@user.name}のデータを削除しました。"
     redirect_to users_url
   end
-  
+
   def edit_basic_info
   end
-  
+
   def update_basic_info
     if @user.update_attributes(basic_info_params)
       flash[:success] = "#{@user.name}の基本情報を更新しました。"
@@ -235,13 +234,13 @@ class UsersController < ApplicationController
     end
     redirect_to users_url
   end
-  
+
   private
-  
+
     def user_params
       params.require(:user).permit(:name, :email, :department, :password, :password_confirmation, :favorite_subject, :self_introduction, :image, :tutor, :parent)
     end
-     
+
     def basic_info_params
       params.require(:user).permit(:department, :basic_time, :work_time)
     end
