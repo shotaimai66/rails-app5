@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::933175109264:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::017522386375:role/rails_ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/rails5",
+          "awslogs-group": "/ecs/rails",
           "awslogs-region": "ap-northeast-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -33,14 +33,6 @@
       "workingDirectory": null,
       "secrets": [
         {
-          "valueFrom": "rails_aws_access_key_id",
-          "name": "AWS_ACCESS_KEY_ID"
-        },
-        {
-          "valueFrom": "rails_aws_secret_access_key",
-          "name": "AWS_SECRET_ACCESS_KEY"
-        },
-        {
           "valueFrom": "rails-rails-env",
           "name": "RAILS_ENV"
         },
@@ -49,11 +41,7 @@
           "name": "RDS_DB_NAME"
         },
         {
-          "valueFrom": "rails-rds-hostname",
-          "name": "RDS_HOSTNAME"
-        },
-        {
-          "valueFrom": "password",
+          "valueFrom": "rails-rds-password",
           "name": "RDS_PASSWORD"
         },
         {
@@ -63,6 +51,14 @@
         {
           "valueFrom": "rails-rds-username",
           "name": "RDS_USERNAME"
+        },
+        {
+          "valueFrom": "rails-s3-access-key-id",
+          "name": "AWS_ACCESS_KEY_ID"
+        },
+        {
+          "valueFrom": "rails-s3-access-key-secret",
+          "name": "AWS_SECRET_ACCESS_KEY"
         }
       ],
       "dockerSecurityOptions": null,
@@ -70,7 +66,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "933175109264.dkr.ecr.ap-northeast-1.amazonaws.com/rails5:latest",
+      "image": "017522386375.dkr.ecr.ap-northeast-1.amazonaws.com/rails:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -87,18 +83,18 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "rails5"
+      "name": "rails"
     }
   ],
   "placementConstraints": [],
-  "memory": "512",
-  "taskRoleArn": "arn:aws:iam::933175109264:role/ecsTaskExecutionRole",
+  "memory": "1024",
+  "taskRoleArn": "arn:aws:iam::017522386375:role/rails_ecsTaskExecutionRole",
   "compatibilities": [
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:933175109264:task-definition/rails5:3",
-  "family": "rails5",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:017522386375:task-definition/rails:31",
+  "family": "rails",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -160,8 +156,8 @@
     "FARGATE"
   ],
   "networkMode": "awsvpc",
-  "cpu": "256",
-  "revision": 3,
+  "cpu": "512",
+  "revision": 31,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
