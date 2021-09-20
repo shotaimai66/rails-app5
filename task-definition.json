@@ -49,6 +49,10 @@
           "name": "RDS_PORT"
         },
         {
+          "valueFrom": "rails-rds-hostname",
+          "name": "RDS_HOSTNAME"
+        },
+        {
           "valueFrom": "rails-rds-username",
           "name": "RDS_USERNAME"
         },
