@@ -20,4 +20,4 @@ ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 ADD . $APP_ROOT
 
-CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
+CMD bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"

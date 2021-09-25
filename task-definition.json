@@ -41,6 +41,10 @@
           "name": "RDS_DB_NAME"
         },
         {
+          "valueFrom": "rails-rds-hostname",
+          "name": "RDS_HOSTNAME"
+        },
+        {
           "valueFrom": "rails-rds-password",
           "name": "RDS_PASSWORD"
         },
@@ -53,12 +57,8 @@
           "name": "RDS_USERNAME"
         },
         {
-          "valueFrom": "rails-s3-access-key-id",
-          "name": "AWS_ACCESS_KEY_ID"
-        },
-        {
-          "valueFrom": "rails-s3-access-key-secret",
-          "name": "AWS_SECRET_ACCESS_KEY"
+          "valueFrom": "rails-s3-bucket-name",
+          "name": "S3_BUCKET_NAME"
         }
       ],
       "dockerSecurityOptions": null,
@@ -93,7 +93,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:017522386375:task-definition/rails:31",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:017522386375:task-definition/rails:42",
   "family": "rails",
   "requiresAttributes": [
     {
@@ -157,7 +157,7 @@
   ],
   "networkMode": "awsvpc",
   "cpu": "512",
-  "revision": 31,
+  "revision": 42,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
